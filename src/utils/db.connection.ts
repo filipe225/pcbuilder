@@ -3,7 +3,7 @@ import mongoose from "mongoose";
 
 export async function connectToDatabase() {
 
-    const uri = 'mongodb+srv://filipe225:Chocapic1Mongodb@pc-builder-cluster.gsyro.mongodb.net/myFirstDatabase?retryWrites=true&w=majority'
+    const uri: string = process.env.DB_URI as string;
     try {
         const client = await mongoose.connect(uri);
         console.log("Connected to Database!");
