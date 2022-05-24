@@ -1,0 +1,26 @@
+extends template.pug
+
+block content 
+    h2 Hello from homepage
+
+
+    .columns
+        .column
+            a(href="/admin/new_computer") Build New Computer
+        .column
+            a(href="/admin/update_computer") Update Computer 
+        .column
+            a(href="/admin/add_product") Add Product
+        .column
+            a(href="/admin/update_product") Update Product
+        .column
+            a(href="/admin/manage_users")  Manage users
+
+    ul
+        each obj in computers
+            ul
+                li= obj.processor
+                li= obj.case
+                li= obj.graphics_card
+                li= obj.motherboard
+                li= obj.ram
