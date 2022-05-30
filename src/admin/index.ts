@@ -1,8 +1,12 @@
 import express, { Request, Response} from 'express'
 import pug from 'pug'
 import path from 'path'
+import 'dotenv/config';
+
 import admin_router from '../routes/admin.routes';
 import { connectToDatabase } from '../utils/db.connection';
+import cpu_model from '../models/cpu.model';
+
 
 const app = express();
 
@@ -22,11 +26,21 @@ app.get('/add_cpu', (req, res) => {
     res.render('add_cpu');
 })
 
-app.post('/add_new_cpu', (req, res) => {
+app.post('/add_new_cpu', async (req, res) => {
     console.log('ADD NEW CPU POST');
-    console.log(req.body);
-    res.statusCode = 200;
-    res.send('OK');
+    try {
+        console.log(req.body);
+        const cpu = new cpu_model(req.body);
+        await cpu.save();
+        res.statusCode = 200;
+        res.send('OK');        
+    } catch (error) {
+        console.log(error);
+        res.statusCode = 401;
+        res.send('Failed');
+
+    }
+
 });
 
 app.listen(6200, () => {
