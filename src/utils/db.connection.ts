@@ -9,7 +9,8 @@ export async function connectToDatabase() {
         //console.log(client);
         console.log("Connected to Database!");
     } catch (error) {
-        console.log(error);
+        console.error('Error connecting to database: ', error);
+        return process.exit(1);
     }
 
 }

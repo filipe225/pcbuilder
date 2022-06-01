@@ -1,8 +1,20 @@
 
 import { Schema, model } from 'mongoose';
 
+export enum Manufacturer {
+    AMD = 'AMD',
+    INTEL = 'INTEL'
+}
+
+export enum Architecture {
+    AM4 = 'AM4',
+    AM5 = 'AM5',
+    LGA = 'LGA'
+}
+
 export interface cpu_interface {
     name: string,
+    manufacturer: Manufacturer,
     socket: string,
     cores: number,
     threads: number,
@@ -19,17 +31,18 @@ export interface cpu_interface {
 
 const cpu_schema = new Schema<cpu_interface>(
     {
-        name: { type: String },
-        socket: { type: String },
-        cores: { type: Number },
-        threads: { type: Number },
-        base_frequency: { type: String },
-        max_frequency: { type: String },
-        cache: { type: String },
-        architecture: { type: String },
-        integrated_gpu: { type: String },
-        ram_technology: { type: String },
-        tdp: { type: String },
+        name: { type: String, required: true },
+        manufacturer: { type: String, enum: Object.values(Manufacturer), required: true },
+        socket: { type: String, required: true },
+        cores: { type: Number, required: true },
+        threads: { type: Number , required: true},
+        base_frequency: { type: String, required: true },
+        max_frequency: { type: String, required: true },
+        cache: { type: String, required: true },
+        architecture: { type: String, required: true},
+        integrated_gpu: { type: Boolean, required: true },
+        ram_technology: { type: String, required: true },
+        tdp: { type: String, required: true },
         overclock_tutorial: { type: String, required: false, default: '' },
         year_of_release: { type: Date, required: false, default: '' }
     }, 

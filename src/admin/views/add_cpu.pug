@@ -1,50 +1,53 @@
 
 extends template.pug 
-
+    
 block content 
     form(action="/add_new_cpu", method="post")
         h3 Add new CPU 
         .field.form-element
-            label.label(for="input_name") Name
-            input#input_name(type="text", name="input_name") 
+            label.label(for="name") Name
+            input#input_name(type="text", name="name")
         .field.form-element
-            label.label(for="input_socket") Socket
-            select#input_socket(name="input_socket")
+            label.label(for="manufacturer") manufacturer
+            input#input_manufacturer(type="text", manufacturer="manufacturer") 
+        .field.form-element
+            label.label(for="socket") Socket
+            select#input_socket(name="socket")
                 option(value="AM4") AM4
                 option(value="AM5") AM5
                 option(value="LGA 1200") LGA 1200
                 option(value="LGA 1151") LGA 1151
         .field.form-element
-            label.label(for="input_cores") Cores
-            input#input_cores(type="number", name="input_cores") 
+            label.label(for="cores") Cores
+            input#input_cores(type="number", name="cores") 
         .field.form-element
-            label.label(for="input_threads") Threads
-            input#input_threads(type="number", name="input_threads")
+            label.label(for="threads") Threads
+            input#input_threads(type="number", name="threads")
         .field.form-element
-            label.label(for="input_base_frequency") Base Frequency
-            input#input_base_frequency(type="text", name="input_base_frequency") 
+            label.label(for="base_frequency") Base Frequency
+            input#input_base_frequency(type="text", name="base_frequency") 
         .field.form-element
-            label.label(for="input_max_frequency") Max Frequency
-            input#input_max_frequency(type="text", name="input_max_frequency") 
+            label.label(for="max_frequency") Max Frequency
+            input#input_max_frequency(type="text", name="max_frequency") 
         .field.form-element
-            label.label(for="input_cache") Cache
-            input#input_cache(type="text", name="input_cache") 
+            label.label(for="cache") Cache
+            input#input_cache(type="text", name="cache") 
         .field.form-element
-            label.label(for="input_architecture") Architecture
-            input#input_architecture(type="text", name="input_architecture") 
+            label.label(for="architecture") Architecture
+            input#input_architecture(type="text", name="architecture") 
         .field.form-element
-            label.label(for="input_tegrated_gpu") Integrated GPU
-            input#input_tegrated_gpu(type="checkbox", name="input_tegrated_gpu")
+            label.label(for="tegrated_gpu") Integrated GPU
+            input#input_tegrated_gpu(type="checkbox", name="tegrated_gpu")
         .field.form-element
-            label.label(for="input_ram_technology") RAM Technology
-            select#input_ram_technology(name="input_ram_technology")
+            label.label(for="ram_technology") RAM Technology
+            select#input_ram_technology(name="ram_technology")
                 option(value="ddr4") DDR4
                 option(value="ddr5") DDR5    
         .field.form-element
-            label.label(for="input_tdp") TDP
-            input#input_tdp(type="text", name="input_tdp") 
+            label.label(for="tdp") TDP
+            input#input_tdp(type="text", name="tdp") 
         .field.form-element
-            label.label(for="input_year_of_release") Year Of Release
-            input#input_year_of_release(type="date", name="input_year_of_release")
+            label.label(for="year_of_release") Year Of Release
+            input#input_year_of_release(type="date", name="year_of_release")
         .field.form-element
             input(type="submit", value="Submit")  
