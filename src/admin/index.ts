@@ -6,6 +6,7 @@ import 'dotenv/config';
 import admin_router from '../routes/admin.routes';
 import { connectToDatabase } from '../utils/db.connection';
 import cpu_model from '../models/cpu.model';
+import { createCpu, updateCpu, deleteCpu } from '../services/cpu.service';
 
 
 const app = express();
@@ -22,32 +23,17 @@ app.set('view engine', 'pug');
 
 app.use('/admin', admin_router);
 
-app.get('/add_cpu', (req, res) => {
-    res.render('add_cpu');
-})
+// CPU ROUTES
+app.get('/add_cpu', (req, res) => { res.render('add_cpu'); })
+app.post('/add_new_cpu', createCpu);
+app.put('update_cpu/:id', updateCpu);
+app.delete('delete_cpu/:id', deleteCpu);
 
-app.post('/add_new_cpu', async (req, res) => {
-    console.log('ADD NEW CPU POST');
-    try {
-        console.log(req.body);
-        const cpu = new cpu_model(req.body);
-        await cpu.save();
-        res.statusCode = 200;
-        res.send('OK');        
-    } catch (error) {
-        console.log(error);
-        res.statusCode = 401;
-        res.send('Failed');
-
-    }
-
-});
 
 app.listen(6200, () => {
     console.log("App running at http://localhost:6200")
     connectToDatabase();
 });
-
 
 // app.get('/', (req: Request, res: Response) => {
 //     res.render('homepage', { 

@@ -1,11 +1,11 @@
 
 import { Request, Response } from "express";
-import { FilterQuery } from "mongoose";
+import { UpdateQuery, FilterQuery } from "mongoose";
 import cpu_model, { cpu_interface } from "../models/cpu.model";
 
 export function createCpu(req: Request, res: Response) {
     try {
-        const result = cpu_model.create(req.body);
+        const result = cpu_model.create<cpu_interface>(req.body);
         console.log(result);
         return result;
     } catch (error) {
@@ -15,8 +15,24 @@ export function createCpu(req: Request, res: Response) {
 
 }
 
-async function updateCpu() {
+export async function updateCpu(req: Request, res: Response) {
+    try {
+        const cpu_id = req.params.id;
 
+    } catch (error) {
+        console.error(error);
+        throw error;    
+    }
+}
+
+export async function deleteCpu(req: Request, res: Response) {
+    try {
+        const cpu_id = req.params.id;
+
+    } catch (error) {
+        console.error(error);
+        throw error;
+    }
 }
 
 async function getAllCpus() {
