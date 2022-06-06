@@ -3,11 +3,12 @@ import { Request, Response } from "express";
 import { UpdateQuery, FilterQuery } from "mongoose";
 import cpu_model, { cpu_interface } from "../models/cpu.model";
 
-export function createCpu(req: Request, res: Response) {
+export async function createCpu(req: Request, res: Response) {
     try {
-        const result = cpu_model.create<cpu_interface>(req.body);
+        const result = await cpu_model.create<cpu_interface>(req.body);
         console.log(result);
-        return result;
+       res.statusCode = 200;
+       res.send(JSON.stringify(result));
     } catch (error) {
         console.error(error);
         throw error;

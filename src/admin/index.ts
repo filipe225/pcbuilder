@@ -5,7 +5,7 @@ import 'dotenv/config';
 
 import admin_router from '../routes/admin.routes';
 import { connectToDatabase } from '../utils/db.connection';
-import cpu_model from '../models/cpu.model';
+import cpu_model, { Architecture, Manufacturer, Socket } from '../models/cpu.model';
 import { createCpu, updateCpu, deleteCpu } from '../services/cpu.service';
 
 
@@ -24,7 +24,12 @@ app.set('view engine', 'pug');
 app.use('/admin', admin_router);
 
 // CPU ROUTES
-app.get('/add_cpu', (req, res) => { res.render('add_cpu'); })
+app.get('/add_cpu', (req, res) => { 
+    const manufacturer = Object.values(Manufacturer);
+    const socket = Object.values(Socket);
+    const architecture = Object.values(Architecture);
+    res.render('add_cpu', { manufacturer, socket, architecture } ); 
+})
 app.post('/add_new_cpu', createCpu);
 app.put('update_cpu/:id', updateCpu);
 app.delete('delete_cpu/:id', deleteCpu);

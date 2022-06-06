@@ -9,14 +9,15 @@ block content
             input#input_name(type="text", name="name")
         .field.form-element
             label.label(for="manufacturer") manufacturer
-            input#input_manufacturer(type="text", manufacturer="manufacturer") 
+            select#input_manufacturer(name="manufacturer") 
+                each val, key in manufacturer
+                    option(value= val)= val
+            input#input_manufacturer(type="text", name="manufacturer") 
         .field.form-element
             label.label(for="socket") Socket
             select#input_socket(name="socket")
-                option(value="AM4") AM4
-                option(value="AM5") AM5
-                option(value="LGA 1200") LGA 1200
-                option(value="LGA 1151") LGA 1151
+                each val, key in socket
+                    option(value=val)= val
         .field.form-element
             label.label(for="cores") Cores
             input#input_cores(type="number", name="cores") 
