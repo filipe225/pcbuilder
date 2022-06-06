@@ -9,7 +9,7 @@
     "build": "npx tsc",
     "dev": "concurrently \"npx tsc --watch\" \"nodemon -q dist/server.js\"",
     "admin": "node admin/index.js",
-    "admin_watch": "nodemon ./dist/admin/index.js"
+    "admin_watch": "concurrently \"npx tsc --watch\" \"nodemon -q dist/admin/index.js\""
   },
   "author": "",
   "license": "ISC",
