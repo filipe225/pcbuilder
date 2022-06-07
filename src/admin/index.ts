@@ -1,4 +1,4 @@
-import express, { Request, Response} from 'express'
+import express, { Errback, ErrorRequestHandler, NextFunction, Request, Response} from 'express'
 import pug from 'pug'
 import path from 'path'
 import 'dotenv/config';
@@ -7,6 +7,7 @@ import admin_router from '../routes/admin.routes';
 import { connectToDatabase } from '../utils/db.connection';
 import cpu_model, { Architecture, Manufacturer, Socket } from '../models/cpu.model';
 import { createCpu, updateCpu, deleteCpu } from '../services/cpu.service';
+import CpuMiddlewareTransform from '../middleware/cpu.middleware';
 
 
 const app = express();
@@ -14,14 +15,18 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-
+// STATIC FILES CSS / JS
 app.use(express.static(path.resolve(path.join(__dirname, '/views'))));
 
+// SET ENGINE AS PUG. SET VIEWS DIRECTORY
 app.set('views', path.resolve(path.join(__dirname, './views')));
 app.set('view engine', 'pug');
 
 
-app.use('/admin', admin_router);
+// ROUTES
+
+// ADMIN ROUTER
+app.use('/', admin_router);
 
 // CPU ROUTES
 app.get('/add_cpu', (req, res) => { 
@@ -30,10 +35,15 @@ app.get('/add_cpu', (req, res) => {
     const architecture = Object.values(Architecture);
     res.render('add_cpu', { manufacturer, socket, architecture } ); 
 })
-app.post('/add_new_cpu', createCpu);
+app.post('/add_new_cpu', CpuMiddlewareTransform, createCpu);
 app.put('update_cpu/:id', updateCpu);
 app.delete('delete_cpu/:id', deleteCpu);
 
+
+// ERROR HANDLER
+app.use((err: any, req: Request, res: Response, next: NextFunction) => {
+    res.status(400).send(err.message);
+})
 
 app.listen(6200, () => {
     console.log("App running at http://localhost:6200")
