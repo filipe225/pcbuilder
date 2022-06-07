@@ -1,5 +1,6 @@
 
-import { Schema, model } from 'mongoose';
+import { Types, Schema, model } from 'mongoose';
+import { store_interface, store_schema } from './store.model';
 
 export enum Manufacturer {
     AMD = 'AMD',
@@ -33,7 +34,9 @@ export interface cpu_interface {
     tdp: string,
     overclock_tutorial?: string,
     year_of_release?: Date,
+    stores?: store_interface[]
 }
+
 
 const cpu_schema = new Schema<cpu_interface>(
     {
@@ -50,10 +53,13 @@ const cpu_schema = new Schema<cpu_interface>(
         ram_technology: { type: String, required: true },
         tdp: { type: String, required: true },
         overclock_tutorial: { type: String, required: false, default: '' },
-        year_of_release: { type: Date, required: false, default: '' }
+        year_of_release: { type: Date, required: false, default: '' },
+        stores: [store_schema]
     }, 
     { timestamps: true }
 );
+
+cpu_schema.index({ db_name: 1 });
 
 const cpu_model = model('cpu', cpu_schema);
 

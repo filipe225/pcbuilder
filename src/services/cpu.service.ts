@@ -5,7 +5,7 @@ import cpu_model, { cpu_interface } from "../models/cpu.model";
 
 export async function createCpu(req: Request, res: Response) {
     try {
-        const result = await cpu_model.create<cpu_interface>(req.body);
+        const result = await cpu_model.create<cpu_interface>(res.locals.cpu);
         console.log(result);
        res.statusCode = 200;
        res.send(JSON.stringify(result));
