@@ -1,4 +1,4 @@
-import express, { Errback, ErrorRequestHandler, NextFunction, Request, Response} from 'express'
+import express, { Request, Response, NextFunction} from 'express'
 import pug from 'pug'
 import path from 'path'
 import 'dotenv/config';
@@ -8,6 +8,7 @@ import { connectToDatabase } from '../utils/db.connection';
 import cpu_model, { Architecture, Manufacturer, Socket } from '../models/cpu.model';
 import { createCpu, updateCpu, deleteCpu } from '../services/cpu.service';
 import CpuMiddlewareTransform from '../middleware/cpu.middleware';
+import { StoreName } from '../models/store.model';
 
 
 const app = express();
@@ -33,7 +34,8 @@ app.get('/add_cpu', (req, res) => {
     const manufacturer = Object.values(Manufacturer);
     const socket = Object.values(Socket);
     const architecture = Object.values(Architecture);
-    res.render('add_cpu', { manufacturer, socket, architecture } ); 
+    const stores = Object.values(StoreName)
+    res.render('add_cpu', { manufacturer, socket, architecture, stores } ); 
 })
 app.post('/add_new_cpu', CpuMiddlewareTransform, createCpu);
 app.put('update_cpu/:id', updateCpu);

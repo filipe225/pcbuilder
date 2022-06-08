@@ -20,6 +20,7 @@ export enum Socket {
 }
 
 export interface cpu_interface {
+    db_name: string,
     name: string,
     manufacturer: Manufacturer,
     socket: Socket,
@@ -40,6 +41,7 @@ export interface cpu_interface {
 
 const cpu_schema = new Schema<cpu_interface>(
     {
+        db_name: { type: String, required: true },
         name: { type: String, required: true },
         manufacturer: { type: String, enum: Object.values(Manufacturer), required: true },
         socket: { type: String, enum: Object.values(Socket), required: true },
