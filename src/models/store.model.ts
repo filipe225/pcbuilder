@@ -11,6 +11,7 @@ export interface store_interface {
     name: keyof typeof StoreName,
     price: number,
     discount: number,
+    availability: boolean,
     link: string
 }
 
@@ -19,6 +20,7 @@ export const store_schema = new Schema<store_interface>(
         name: { type: String, enum: Object.values(StoreName), required: true },
         price: { type: Number, required: true, default: 0 },
         discount: { type: Number, required: true, default: 0 },
+        availability: { type: Boolean, required: true, default: true },
         link: { type: String, required: true, default: '' }
     }
 );

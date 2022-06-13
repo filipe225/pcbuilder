@@ -46,7 +46,7 @@ block content
                         option(value=val)= val 
             .column.field.form-element
                 label.label(for="integrated_gpu") Integrated GPU
-                input#input_tegrated_gpu(type="checkbox", name="integrated_gpu")
+                input#input_integrated_gpu(type="checkbox", name="integrated_gpu")
             .column.field.form-element
                 label.label(for="ram_technology") RAM Technology
                 select#input_ram_technology(name="ram_technology")
@@ -63,16 +63,19 @@ block content
             .columns
                 .column.field.form-element
                     label.label(for=val + '_name') Store
-                    input#input_(type="text", name=val + '_name', value=val disabled="true")
+                    input(type="text", name=val + '_name', value=val disabled="true")
                 .column.field.form-element
                     label.label(for=val + '_price') Price
-                    input#input_(type="number", name=val + '_price', min="0", value="0")  
+                    input(type="number", name=val + '_price', min="0", value="0")  
                 .column.field.form-element
                     label.label(for=val + '_discount') Discount
-                    input#input_(type="text", name=val + '_discount', min="0", value="0")
+                    input(type="text", name=val + '_discount', min="0", value="0")
+                .column.field.form-element
+                    label.label(for=val + '_availability') Availability
+                    input(type="checkbox", name=val + '_availability')
                 .column.field.form-element
                     label.label(for=val + '_link') Link
-                    input#input_(type="text", name=val + '_link' min="0", value="0")    
+                    input(type="text", name=val + '_link' min="0", value="0")    
         .columns 
             .field.form-element
                 input(type="submit", value="Submit")

@@ -7,7 +7,7 @@ import admin_router from '../routes/admin.routes';
 import { connectToDatabase } from '../utils/db.connection';
 import cpu_model, { Architecture, Manufacturer, Socket } from '../models/cpu.model';
 import { createCpu, updateCpu, deleteCpu } from '../services/cpu.service';
-import CpuMiddlewareTransform from '../middleware/cpu.middleware';
+import { CpuMiddlewareTransform } from '../middleware/cpu.middleware';
 import { StoreName } from '../models/store.model';
 
 
@@ -36,7 +36,7 @@ app.get('/add_cpu', (req, res) => {
     const architecture = Object.values(Architecture);
     const stores = Object.values(StoreName)
     res.render('add_cpu', { manufacturer, socket, architecture, stores } ); 
-})
+});
 app.post('/add_new_cpu', CpuMiddlewareTransform, createCpu);
 app.put('update_cpu/:id', updateCpu);
 app.delete('delete_cpu/:id', deleteCpu);

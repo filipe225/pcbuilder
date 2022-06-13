@@ -19,6 +19,21 @@ export enum Socket {
     LGA = 'LGA'
 }
 
+export enum FrequencyUnit {
+    Ghz = 'Ghz'
+}
+
+export enum TdpUnit {
+    W = 'W'
+}
+
+export enum CacheUnit {
+    Mb = 'Mb'
+}
+
+
+// TODO
+// CHANGE CACHE TO ARRAY OF STRINGS 
 export interface cpu_interface {
     db_name: string,
     name: string,
@@ -26,16 +41,21 @@ export interface cpu_interface {
     socket: Socket,
     cores: number,
     threads: number,
-    base_frequency: string,
-    max_frequency: string,
-    cache: string,
+    base_frequency: number,
+    max_frequency: number,
+    frequency_unit: FrequencyUnit
+    cache: number,
+    cache_unit: CacheUnit,
     architecture: Architecture,
-    integrated_gpu?: boolean,
+    integrated_gpu: boolean,
     ram_technology: string,
-    tdp: string,
+    tdp: number,
+    tdp_unit: TdpUnit,
     overclock_tutorial?: string,
     year_of_release?: Date,
-    stores?: store_interface[]
+    stores?: store_interface[],
+    created_at?: Date,
+    updated_at?: Date
 }
 
 
@@ -47,13 +67,16 @@ const cpu_schema = new Schema<cpu_interface>(
         socket: { type: String, enum: Object.values(Socket), required: true },
         cores: { type: Number, required: true },
         threads: { type: Number , required: true},
-        base_frequency: { type: String, required: true },
-        max_frequency: { type: String, required: true },
-        cache: { type: String, required: true },
+        base_frequency: { type: Number, required: true },
+        max_frequency: { type: Number, required: true },
+        frequency_unit: { type: String, enum: Object.values(FrequencyUnit), required: true, default: FrequencyUnit.Ghz },
+        cache: { type: Number, required: true },
+        cache_unit: { type: String, enum: Object.values(CacheUnit), required: true, default: CacheUnit.Mb },
         architecture: { type: String, enum: Object.values(Architecture), required: true},
         integrated_gpu: { type: Boolean, required: true, default: false },
         ram_technology: { type: String, required: true },
-        tdp: { type: String, required: true },
+        tdp: { type: Number, required: true },
+        tdp_unit: { type: String, enum: Object.values(TdpUnit), required: true, default: TdpUnit.W },
         overclock_tutorial: { type: String, required: false, default: '' },
         year_of_release: { type: Date, required: false, default: '' },
         stores: [store_schema]
