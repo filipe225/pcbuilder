@@ -35,7 +35,7 @@ export enum CacheUnit {
 // TODO
 // CHANGE CACHE TO ARRAY OF STRINGS 
 export interface cpu_interface {
-    db_name: string,
+    _id?: Types.ObjectId,
     name: string,
     manufacturer: Manufacturer,
     socket: Socket,
@@ -61,7 +61,6 @@ export interface cpu_interface {
 
 const cpu_schema = new Schema<cpu_interface>(
     {
-        db_name: { type: String, required: true },
         name: { type: String, required: true },
         manufacturer: { type: String, enum: Object.values(Manufacturer), required: true },
         socket: { type: String, enum: Object.values(Socket), required: true },
@@ -83,8 +82,6 @@ const cpu_schema = new Schema<cpu_interface>(
     }, 
     { timestamps: true }
 );
-
-cpu_schema.index({ db_name: 1 });
 
 const cpu_model = model('cpu', cpu_schema);
 

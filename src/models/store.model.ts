@@ -7,11 +7,18 @@ export enum StoreName {
     PcComponentes = 'PcComponentes'
 }
 
+export enum Availability {
+    disponivel = 'Disponível',
+    por_ecomenda = 'Por Ecomenda',
+    transito = 'Em Transito',
+    esgotado = 'Esgotado'    
+}
+
 export interface store_interface {
     name: keyof typeof StoreName,
     price: number,
     discount: number,
-    availability: boolean,
+    availability: Availability,
     link: string
 }
 
@@ -20,7 +27,7 @@ export const store_schema = new Schema<store_interface>(
         name: { type: String, enum: Object.values(StoreName), required: true },
         price: { type: Number, required: true, default: 0 },
         discount: { type: Number, required: true, default: 0 },
-        availability: { type: Boolean, required: true, default: true },
+        availability: { type: String, enum: Object.values(Availability), required: true, default: Availability.disponivel },
         link: { type: String, required: true, default: '' }
     }
 );

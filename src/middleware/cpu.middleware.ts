@@ -3,7 +3,7 @@ import { cpu_interface } from "../models/cpu.model";
 import { StoreName, store_interface } from "../models/store.model";
 
 
-export function CpuMiddlewareTransform(req: Request, res: Response, next: NextFunction) {
+export function cpuMiddlewareTransform(req: Request, res: Response, next: NextFunction) {
     
     const cpu_body = req.body; 
 
@@ -23,7 +23,6 @@ export function CpuMiddlewareTransform(req: Request, res: Response, next: NextFu
     });
 
     const cpu: cpu_interface = {
-        db_name: cpu_body.db_name,
         name: cpu_body.name,
         architecture: cpu_body.architecture,
         base_frequency: cpu_body.base_frequency,
