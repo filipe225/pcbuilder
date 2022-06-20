@@ -1,4 +1,4 @@
-import { model, Schema } from "mongoose"
+import { Types, model, Schema } from "mongoose"
 
 
 export enum StoreName {
@@ -15,16 +15,21 @@ export enum Availability {
 }
 
 export interface store_interface {
+    _id?: Types.ObjectId,
     name: keyof typeof StoreName,
+    store_sells: Boolean,
     price: number,
     discount: number,
     availability: Availability,
-    link: string
+    link: string,
+    created_at?: Date,
+    updated_at?: Date
 }
 
 export const store_schema = new Schema<store_interface>(
     {
         name: { type: String, enum: Object.values(StoreName), required: true },
+        store_sells: { type: Boolean, required: true, default: true },
         price: { type: Number, required: true, default: 0 },
         discount: { type: Number, required: true, default: 0 },
         availability: { type: String, enum: Object.values(Availability), required: true, default: Availability.disponivel },

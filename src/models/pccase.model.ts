@@ -1,5 +1,6 @@
 
 import { Schema, model } from 'mongoose';
+import { store_interface } from './store.model';
 
 
 enum Motherboard_PSU_Support {
@@ -9,7 +10,7 @@ enum Motherboard_PSU_Support {
     Mini_ITX = 'Mini-ITX'
 }
 
-export interface case_interface {
+export interface pc_case_interface {
     name: string,
     case_form_factor: string
     motherboard_form_factor: Motherboard_PSU_Support,
@@ -31,13 +32,15 @@ export interface case_interface {
     Front_Side_Top_Panel_IO: string[],	
     Drive_Bays: string[],
     Standard_Expansion_Slots: number,
-    Vertical_Expansion_Slots: number
+    Vertical_Expansion_Slots: number,
+
+    stores: store_interface[]
 }
 
-const case_schema = new Schema<case_interface>({
+const pc_case_schema = new Schema<pc_case_interface>({
 
 });
 
-const case_model = model('cpu', case_schema);
+const pc_case_model = model('cpu', pc_case_schema);
 
-export default case_model;
+export default pc_case_model;

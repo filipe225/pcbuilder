@@ -1,8 +1,11 @@
 
-import { Schema, model } from 'mongoose';
+import { Types, Schema, model } from 'mongoose';
+import { store_interface } from './store.model';
 
 export interface motherboard_interface {
-
+    _id?: Types.ObjectId,
+    name: string,
+    stores: store_interface[]
 }
 
 const motherboard_schema = new Schema<motherboard_interface>({
