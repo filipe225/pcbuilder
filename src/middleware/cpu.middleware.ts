@@ -14,6 +14,7 @@ export function cpuMiddlewareTransform(req: Request, res: Response, next: NextFu
         stores.push(
             {
                 name: store_name,
+                store_sells: cpu_body[store_name + '_store_sells'],
                 price: cpu_body[store_name + '_price'],
                 discount: cpu_body[store_name + '_discount'],
                 availability: cpu_body[store_name + '_availability'],

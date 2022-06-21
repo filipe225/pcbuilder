@@ -2,6 +2,7 @@
 import { Request, Response } from "express";
 import cpu_model, { cpu_interface, Architecture, FrequencyUnit, Manufacturer, Socket, TdpUnit, CacheUnit } from '../models/cpu.model';
 import { StoreName } from '../models/store.model';
+import { getProductById } from "./database.service";
 
 export async function getAllCpus(req: Request, res: Response) { 
     try {
@@ -22,7 +23,7 @@ export function addNewCpu(req: Request, res: Response) {
     const frequency_unit = Object.values(FrequencyUnit);
     const cache_unit = Object.values(CacheUnit);
     const tdp_unit = Object.values(TdpUnit);
-    res.render('add_cpu', { manufacturer, socket, architecture, stores, frequency_unit, cache_unit, tdp_unit } ); 
+    res.render('add_cpu', { isToAddNew: true, manufacturer, socket, architecture, stores, frequency_unit, cache_unit, tdp_unit } ); 
 }
 
 export async function createCpu(req: Request, res: Response) {
@@ -36,6 +37,19 @@ export async function createCpu(req: Request, res: Response) {
         throw error;
     }
 
+}
+
+export async function getCpuToUpdate(req: Request, res: Response) {
+    const cpu_id = req.params.id;
+    const cpu_info = getProductById('cpu', cpu_id);
+    res.render('update_cpu', { cpu_info });
+}
+
+export async function getCpuToDelete(req: Request, res: Response) {
+    const cpu_id = req.params.id;
+    const cpu_info = getProductById('cpu', cpu_id);
+
+    res.render('delete_cpu', { cpu_info });
 }
 
 export async function updateCpu(req: Request, res: Response) {

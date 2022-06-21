@@ -1,0 +1,95 @@
+
+extends template.pug 
+
+block content
+    form(action="/add_new_cpu", method="post")
+        h3 Add new CPU
+        .columns
+            .column.field.form-element
+                label.label(for="name") Name
+                input#input_name(type="text", name="name")
+            .column.field.form-element
+                label.label(for="manufacturer") manufacturer
+                select#input_manufacturer(name="manufacturer") 
+                    each val, key in manufacturer
+                        option(value= val)= val
+            .column.field.form-element
+                label.label(for="socket") Socket
+                select#input_socket(name="socket")
+                    each val, key in socket
+                        option(value=val)= val
+        .columns 
+            .column.field.form-element
+                label.label(for="cores") Cores
+                input#input_cores(type="number", name="cores", min="0") 
+            .column.field.form-element
+                label.label(for="threads") Threads
+                input#input_threads(type="number", name="threads", min="0")
+            .column.field.form-element
+                label.label(for="base_frequency") Base Frequency
+                input#input_base_frequency(type="number", name="base_frequency", min="0", step="0.1") 
+            .column.field.form-element
+                label.label(for="max_frequency") Max Frequency
+                input#input_max_frequency(type="number", name="max_frequency", min="0", step="0.1")
+            .column.field.form-element 
+                label.label(for="frequency_unit") Frequency Unit 
+                select#input_frequency_unit(name="frequency_unit")
+                    each val, index in [...frequency_unit] 
+                        option(val= val, selected= index === 0)= val 
+        .columns 
+            .column.field.form-element
+                label.label(for="cache") Cache
+                input#input_cache(type="number", name="cache", min="0") 
+            .column.field.form-element 
+                label.label(for="cache_unit") Cache Unit 
+                select#input_cache_unit(name="cache_unit")
+                    each val, index in [...cache_unit] 
+                        option(val= val, selected= index === 0)= val 
+            .column.field.form-element
+                label.label(for="architecture") Architecture
+                select#input_architecture(name="architecture")
+                    each val, key in architecture
+                        option(value=val)= val 
+            .column.field.form-element
+                label.label(for="integrated_gpu") Integrated GPU
+                input#input_integrated_gpu(type="checkbox", name="integrated_gpu")
+            .column.field.form-element
+                label.label(for="ram_technology") RAM Technology
+                select#input_ram_technology(name="ram_technology")
+                    option(value="ddr4") DDR4
+                    option(value="ddr5") DDR5    
+        .columns 
+            .column.field.form-element
+                label.label(for="tdp") TDP
+                input#input_tdp(type="number", name="tdp", min="0")  
+            .column.field.form-element 
+                label.label(for="tdp_unit") TDP Unit 
+                select#input_tdp_unit(name="tdp_unit")
+                    each val, index in [...tdp_unit] 
+                        option(val= val, selected= index === 0)= val 
+            .column.field.form-element
+                label.label(for="year_of_release") Year Of Release
+                input#input_year_of_release(type="date", name="year_of_release")
+        each val, key in stores
+            .columns
+                .column.field.form-element
+                    label.label(for=val + '_name') Store
+                    input(type="text", name=val + '_name', value=val disabled="true")
+                .column.field.form-element 
+                    label(for=val + '_store_sells') Store Sells?
+                    input#input_store_sells(type="checkbox", name=val + "_store_sells") 
+                .column.field.form-element
+                    label.label(for=val + '_price') Price
+                    input(type="number", name=val + '_price', min="0", value="0")  
+                .column.field.form-element
+                    label.label(for=val + '_discount') Discount
+                    input(type="text", name=val + '_discount', min="0", value="0")
+                .column.field.form-element
+                    label.label(for=val + '_availability') Availability
+                    input(type="checkbox", name=val + '_availability')
+                .column.field.form-element
+                    label.label(for=val + '_link') Link
+                    input(type="text", name=val + '_link' min="0", value="0")    
+        .columns 
+            .field.form-element
+                input(type="submit", value="Submit")

@@ -1,0 +1,13 @@
+
+extends template.pug 
+
+block content 
+
+    form(action="/delete_cpu/#{cpu_info._id}", method="delete")
+        .columns
+            .column.field.form-element
+                label.label(for="name") Name
+                input#input_name(type="text", name="name")
+        .columns 
+            .column.field.form-element
+                input(type="submit", value="Submit")

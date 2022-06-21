@@ -1,17 +1,14 @@
 
 extends template.pug 
-    
+
 block content 
-    form(action="/add_new_cpu", method="post")
-        h3 Add new CPU
-        .columns 
-            .column.field.form-element
-                label.label(for="db_name") Database Name
-                input#input_db_name(type="text", name="db_name")
+
+    form(action="/update_cpu/#{cpu_info._id}", method="put")
+        h3= "Update Cpu " + cpu_info.name
+        .columns
             .column.field.form-element
                 label.label(for="name") Name
                 input#input_name(type="text", name="name")
-        .columns 
             .column.field.form-element
                 label.label(for="manufacturer") manufacturer
                 select#input_manufacturer(name="manufacturer") 
@@ -34,11 +31,21 @@ block content
                 input#input_base_frequency(type="number", name="base_frequency", min="0", step="0.1") 
             .column.field.form-element
                 label.label(for="max_frequency") Max Frequency
-                input#input_max_frequency(type="number", name="max_frequency", min="0", step="0.1") 
+                input#input_max_frequency(type="number", name="max_frequency", min="0", step="0.1")
+            .column.field.form-element 
+                label.label(for="frequency_unit") Frequency Unit 
+                select#input_frequency_unit(name="frequency_unit")
+                    each val, index in [...frequency_unit] 
+                        option(val= val, selected= index === 0)= val 
         .columns 
             .column.field.form-element
                 label.label(for="cache") Cache
                 input#input_cache(type="number", name="cache", min="0") 
+            .column.field.form-element 
+                label.label(for="cache_unit") Cache Unit 
+                select#input_cache_unit(name="cache_unit")
+                    each val, index in [...cache_unit] 
+                        option(val= val, selected= index === 0)= val 
             .column.field.form-element
                 label.label(for="architecture") Architecture
                 select#input_architecture(name="architecture")
@@ -56,6 +63,11 @@ block content
             .column.field.form-element
                 label.label(for="tdp") TDP
                 input#input_tdp(type="number", name="tdp", min="0")  
+            .column.field.form-element 
+                label.label(for="tdp_unit") TDP Unit 
+                select#input_tdp_unit(name="tdp_unit")
+                    each val, index in [...tdp_unit] 
+                        option(val= val, selected= index === 0)= val 
             .column.field.form-element
                 label.label(for="year_of_release") Year Of Release
                 input#input_year_of_release(type="date", name="year_of_release")
@@ -64,6 +76,9 @@ block content
                 .column.field.form-element
                     label.label(for=val + '_name') Store
                     input(type="text", name=val + '_name', value=val disabled="true")
+                .column.field.form-element 
+                    label(for=val + '_store_sells') Store Sells?
+                    input#input_store_sells(type="checkbox", name=val + "_store_sells") 
                 .column.field.form-element
                     label.label(for=val + '_price') Price
                     input(type="number", name=val + '_price', min="0", value="0")  

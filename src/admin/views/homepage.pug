@@ -1,26 +1,19 @@
 extends template.pug
 
-block content 
-    h2 Hello from homepage
-
+block content
 
     .columns
         .column
-            a(href="/admin/new_computer") Build New Computer
+            a(href="/admin/computers/") View Custom Computers
         .column
-            a(href="/admin/update_computer") Update Computer 
+            a(href="/admin/cpu/") View Cpu's
         .column
-            a(href="/admin/add_product") Add Product
+            a(href="/admin/pccase/") View Computer Cases
         .column
-            a(href="/admin/update_product") Update Product
+            a(href="/admin/gpu/") View Graphics Card
         .column
-            a(href="/admin/manage_users")  Manage users
-
-    ul
-        each obj in computers
-            ul
-                li= obj.processor
-                li= obj.case
-                li= obj.graphics_card
-                li= obj.motherboard
-                li= obj.ram
+            a(href="/admin/motherboard/") View MotherBoards
+        .column
+            a(href="/admin/psu/") View PSU's
+        .column
+            a(href="/admin/ram/") View RAM Sticks
