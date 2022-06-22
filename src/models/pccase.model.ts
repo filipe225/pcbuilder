@@ -41,6 +41,6 @@ const pc_case_schema = new Schema<pc_case_interface>({
 
 });
 
-const pc_case_model = model('cpu', pc_case_schema);
+const pc_case_model = model('pccase', pc_case_schema);
 
 export default pc_case_model;

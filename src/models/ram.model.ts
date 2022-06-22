@@ -12,6 +12,6 @@ const ram_schema = new Schema<ram_interface>({
 
 });
 
-const ram_model = model('cpu', ram_schema);
+const ram_model = model('ram', ram_schema);
 
 export default ram_model;

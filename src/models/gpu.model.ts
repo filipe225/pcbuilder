@@ -12,6 +12,6 @@ const gpu_schema = new Schema<gpu_interface>({
 
 });
 
-const gpu_model = model('cpu', gpu_schema);
+const gpu_model = model('gpu', gpu_schema);
 
 export default gpu_model;

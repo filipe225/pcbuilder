@@ -8,10 +8,10 @@ block content
         .columns
             .column.field.form-element
                 label.label(for="name") Name
-                input#input_name(type="text", name="name")
+                input#input_name(type="text", name="name", value=#{cpu_info.name})
             .column.field.form-element
                 label.label(for="manufacturer") manufacturer
-                select#input_manufacturer(name="manufacturer") 
+                select#input_manufacturer(name="manufacturer", value=#{cpu_info.manufacturer}) 
                     each val, key in manufacturer
                         option(value= val)= val
             .column.field.form-element
@@ -22,16 +22,16 @@ block content
         .columns 
             .column.field.form-element
                 label.label(for="cores") Cores
-                input#input_cores(type="number", name="cores", min="0") 
+                input#input_cores(type="number", name="cores", min="0", value=#{cpu_info.cores}) 
             .column.field.form-element
                 label.label(for="threads") Threads
-                input#input_threads(type="number", name="threads", min="0")
+                input#input_threads(type="number", name="threads", min="0", value=#{cpu_info.threads})
             .column.field.form-element
                 label.label(for="base_frequency") Base Frequency
-                input#input_base_frequency(type="number", name="base_frequency", min="0", step="0.1") 
+                input#input_base_frequency(type="number", name="base_frequency", min="0", step="0.1", value=#{cpu_info.base_frequency}) 
             .column.field.form-element
                 label.label(for="max_frequency") Max Frequency
-                input#input_max_frequency(type="number", name="max_frequency", min="0", step="0.1")
+                input#input_max_frequency(type="number", name="max_frequency", min="0", step="0.1", value=#{cpu_info.max_frequency})
             .column.field.form-element 
                 label.label(for="frequency_unit") Frequency Unit 
                 select#input_frequency_unit(name="frequency_unit")
@@ -40,7 +40,7 @@ block content
         .columns 
             .column.field.form-element
                 label.label(for="cache") Cache
-                input#input_cache(type="number", name="cache", min="0") 
+                input#input_cache(type="number", name="cache", min="0", value=#{cpu_info.cache}) 
             .column.field.form-element 
                 label.label(for="cache_unit") Cache Unit 
                 select#input_cache_unit(name="cache_unit")

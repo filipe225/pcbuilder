@@ -1,0 +1,21 @@
+
+extends template.pug 
+
+block content
+    
+    .columns
+        table 
+            thead
+                tr
+                    th 
+                    th 
+                    th 
+                    th 
+                    th 
+            tbody
+                each cpu in all_cpus
+                    tr
+                        td= cpu._id
+                        td= cpu.name
+                            a(href="/admin/cpu/update_cpu/" + cpu._id ) Update Cpu 
+                            a(href="/admin/cpu/delete_cpu/" + cpu._id ) Delete Cpu  

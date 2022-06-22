@@ -15,13 +15,13 @@ app.use(express.static(path.resolve(path.join(__dirname, '/views'))));
 
 // SET ENGINE AS PUG. SET VIEWS DIRECTORY
 app.set('views', [
-            path.resolve(path.join(__dirname, './views')),
-            path.resolve(path.join(__dirname, './views/cpu')),
-            path.resolve(path.join(__dirname, './views/psu')),
-            path.resolve(path.join(__dirname, './views/gpu')),
-            path.resolve(path.join(__dirname, './views/ram')),
-            path.resolve(path.join(__dirname, './views/motherboard')),
-            path.resolve(path.join(__dirname, './views/pccase'))
+            path.resolve(path.join(__dirname, '/views')),
+            path.resolve(path.join(__dirname, '/views/cpu')),
+            path.resolve(path.join(__dirname, '/views/psu')),
+            path.resolve(path.join(__dirname, '/views/gpu')),
+            path.resolve(path.join(__dirname, '/views/ram')),
+            path.resolve(path.join(__dirname, '/views/motherboard')),
+            path.resolve(path.join(__dirname, '/views/pccase'))
         ]);
 app.set('view engine', 'pug');
 // set basedir to be able to have multiple folders inside views
