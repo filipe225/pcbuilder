@@ -31,6 +31,10 @@ export enum CacheUnit {
     Mb = 'Mb'
 }
 
+export enum RamTechonology {
+    DDR4 = 'DDR4',
+    DDR5 = 'DDR5'
+}
 
 // TODO
 // CHANGE CACHE TO ARRAY OF STRINGS 
@@ -48,7 +52,7 @@ export interface cpu_interface {
     cache_unit: CacheUnit,
     architecture: Architecture,
     integrated_gpu: boolean,
-    ram_technology: string,
+    ram_technology: RamTechonology,
     tdp: number,
     tdp_unit: TdpUnit,
     overclock_tutorial?: string,
@@ -73,7 +77,7 @@ const cpu_schema = new Schema<cpu_interface>(
         cache_unit: { type: String, enum: Object.values(CacheUnit), required: true, default: CacheUnit.Mb },
         architecture: { type: String, enum: Object.values(Architecture), required: true},
         integrated_gpu: { type: Boolean, required: true, default: false },
-        ram_technology: { type: String, required: true },
+        ram_technology: { type: String, enum: Object.values(RamTechonology), required: true, default: RamTechonology.DDR5 },
         tdp: { type: Number, required: true },
         tdp_unit: { type: String, enum: Object.values(TdpUnit), required: true, default: TdpUnit.W },
         overclock_tutorial: { type: String, required: false, default: '' },

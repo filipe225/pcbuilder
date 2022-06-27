@@ -1,9 +1,11 @@
 import express, { Request, Response, NextFunction} from 'express';
 import path from 'path';
 import 'dotenv/config';
+import methodOverride from 'method-override';
 
 import admin_router from '../routes/admin.routes';
 import { connectToDatabase } from '../utils/db.connection';
+
 
 const app = express();
 
@@ -25,7 +27,10 @@ app.set('views', [
         ]);
 app.set('view engine', 'pug');
 // set basedir to be able to have multiple folders inside views
-app.locals.basedir =  path.resolve(path.join(__dirname, './views'));
+app.locals.basedir =  path.resolve(path.join(__dirname, '/views'));
+
+// set method override to be able to use PUT and DELETE in html forms
+app.use(methodOverride('_method'));
 
 // ADMIN ROUTER
 // contains all components routers
