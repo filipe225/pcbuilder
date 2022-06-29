@@ -31,7 +31,7 @@ cpu_router.get('/', getAllCpus);
 cpu_router.get('/add_cpu', addNewCpu);
 cpu_router.post('/add_new_cpu', cpuMiddlewareTransform, createCpu);
 cpu_router.get('/update_cpu/:id', getCpuToUpdate);
-cpu_router.put('/update_cpu/:id', updateCpu);
+cpu_router.put('/update_cpu/:id', cpuMiddlewareTransform, updateCpu);
 cpu_router.get('/delete_cpu/:id', getCpuToDelete)
 cpu_router.delete('/delete_cpu/:id', deleteCpu);
 

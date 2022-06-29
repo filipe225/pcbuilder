@@ -33,7 +33,7 @@ export function cpuMiddlewareTransform(req: Request, res: Response, next: NextFu
         cache_unit: cpu_body.cache_unit,
         cores: cpu_body.cores,
         threads: cpu_body.threads,
-        integrated_gpu: cpu_body.integrated_gpu,
+        integrated_gpu: cpu_body.integrated_gpu ? true : false,
         manufacturer: cpu_body.manufacturer,
         overclock_tutorial: cpu_body.overclock_tutorial,
         ram_technology: cpu_body.ram_technology,
