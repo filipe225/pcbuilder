@@ -4,7 +4,7 @@ import cpu_model, { cpu_interface, Architecture, FrequencyUnit, Manufacturer, So
 import { StoreName } from '../models/store.model';
 import { getProductById } from "./database.service";
 
-export async function getAllCpus(req: Request, res: Response) { 
+export async function getAllCpu(req: Request, res: Response) { 
     try {
         const all_cpus = await cpu_model.find();
         res.render('display_cpus', { all_cpus });
