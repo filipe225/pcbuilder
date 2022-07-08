@@ -1,5 +1,4 @@
 import { Request, Response } from "express";
-import { StoreName } from '../models/store.model';
 import { getProductById } from "./database.service";
 
 export async function getAllGpu(req: Request, res: Response) {

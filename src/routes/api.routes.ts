@@ -1,11 +1,23 @@
 import express, { Router, Request, Response, NextFunction } from "express";
+import { getAllComputers, getComputerById } from "../services/computer.service";
 
+/*
+    / homepage
+    GET /computers
+    GET /computer/:id
+    GET /products/cpu/:id
+    GET /products/:product_type/:id
+*/
 
 const api_router: Router = express.Router();
 
-api_router.get('/', (req: Request, res: Response, next: NextFunction) => {
-    res.status(200).send("From api router");
-})
+//api_router.get('/user');
+//api_router.post('/user_registration', registerUser);
 
+api_router.get('/computers', getAllComputers);
+
+api_router.get('/computer/:id', getComputerById);
+
+//api_router.get('/products/:product_type/:id', getProductById);
 
 export default api_router;

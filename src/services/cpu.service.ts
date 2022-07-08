@@ -1,7 +1,6 @@
-
 import { Request, Response } from "express";
-import cpu_model, { cpu_interface, Architecture, FrequencyUnit, Manufacturer, Socket, TdpUnit, CacheUnit, RamTechonology } from '../models/cpu.model';
-import { StoreName } from '../models/store.model';
+import cpu_model, { cpu_interface,  } from '../models/cpu.model';
+import { Architecture, FrequencyUnit, Manufacturer, Socket, TdpUnit, CacheUnit, RamTechonology, StoreName } from '../utils/enums';
 import { getProductById } from "./database.service";
 
 export async function getAllCpu(req: Request, res: Response) { 

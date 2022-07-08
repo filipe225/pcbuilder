@@ -1,9 +1,11 @@
+import Computer from "../models/computer.model";
 import cpu_model, { cpu_interface } from "../models/cpu.model";
 import gpu_model, { gpu_interface } from "../models/gpu.model";
 import motherboard_model from "../models/motherboard.model";
 import pc_case_model from "../models/pccase.model";
 import psu_model, { psu_interface } from "../models/psu.model";
 import ram_model from "../models/ram.model";
+import { user_interface } from "../models/user.model";
 
 export async function getProductById(collection: string, id: string) {
     try {
@@ -63,5 +65,8 @@ export async function saveProduct(collection: string, product: cpu_interface | g
     } catch (error: any) {
         throw new Error(error);
     }
+}
 
+export async function registerUser(user: user_interface) {
+    
 }
