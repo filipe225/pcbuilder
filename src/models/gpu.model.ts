@@ -1,18 +1,7 @@
 
 import { Types, Schema, model } from 'mongoose';
+import { BUS, ClockSpeeedUnit, PowerConsumptionUnit } from '../utils/enums';
 import { store_interface, store_schema } from './store.model';
-
-export enum BUS {
-    Gen_4 = 'Gen 4.0'
-}
-
-export enum ClockSpeeedUnit {
-    MHz = 'MHz'
-}
-
-export enum PowerConsumptionUnit {
-    W = 'Watts'
-}
 
 export interface gpu_interface {
     _id?: Types.ObjectId,
@@ -25,7 +14,7 @@ export interface gpu_interface {
     memory_speed: string,
     memory_interface: string,
     multi_screen_support: string,
-    interface: string[],
+    interface: Types.Array<string>,
     power_consumption: number,
     power_comsumption_unit: PowerConsumptionUnit,
     dimensions: string,

@@ -1,14 +1,8 @@
 
 import { Schema, model } from 'mongoose';
+import { Motherboard_PSU_Support } from '../utils/enums';
 import { store_interface } from './store.model';
 
-
-enum Motherboard_PSU_Support {
-    ATX = 'ATX',
-    E_ATX = 'E-ATX',
-    Micro_ATX = 'Micro-ATX',
-    Mini_ITX = 'Mini-ITX'
-}
 
 export interface pc_case_interface {
     name: string,

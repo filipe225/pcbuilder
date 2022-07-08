@@ -1,43 +1,9 @@
 
 import { Types, Schema, model } from 'mongoose';
+import { Architecture, CacheUnit, FrequencyUnit, Manufacturer, RamTechonology, Socket, TdpUnit } from '../utils/enums';
 import { store_interface, store_schema } from './store.model';
 
-export enum Manufacturer {
-    AMD = 'AMD',
-    INTEL = 'INTEL'
-}
 
-export enum Architecture {
-    ZEN2 = 'ZEN2',
-    ZEN3 = 'ZEN3',
-    ZEN4 = 'ZEN4'
-}
-
-export enum Socket {
-    AM4 = 'AM4',
-    AM5 = 'AM5',
-    LGA = 'LGA'
-}
-
-export enum FrequencyUnit {
-    Ghz = 'Ghz'
-}
-
-export enum TdpUnit {
-    W = 'W'
-}
-
-export enum CacheUnit {
-    Mb = 'Mb'
-}
-
-export enum RamTechonology {
-    DDR4 = 'DDR4',
-    DDR5 = 'DDR5'
-}
-
-// TODO
-// CHANGE CACHE TO ARRAY OF STRINGS 
 export interface cpu_interface {
     _id?: Types.ObjectId,
     name: string,

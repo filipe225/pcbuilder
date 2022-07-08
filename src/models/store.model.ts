@@ -1,18 +1,6 @@
 import { Types, model, Schema } from "mongoose"
+import { Availability, StoreName } from "../utils/enums";
 
-
-export enum StoreName {
-    GlobalData = 'GlobalData',
-    PcDiga = 'PcDiga',
-    PcComponentes = 'PcComponentes'
-}
-
-export enum Availability {
-    disponivel = 'Disponível',
-    por_ecomenda = 'Por Ecomenda',
-    transito = 'Em Transito',
-    esgotado = 'Esgotado'    
-}
 
 export interface store_interface {
     _id?: Types.ObjectId,

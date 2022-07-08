@@ -1,32 +1,44 @@
-import { Schema, model, ObjectId } from 'mongoose';
+import { Schema, model, Types } from 'mongoose';
+import { CpuType } from '../utils/enums';
+import { cooler_interface } from './cooler.model';
+import { cpu_interface } from './cpu.model';
+import { gpu_interface } from './gpu.model';
+import { motherboard_interface } from './motherboard.model';
+import { pc_case_interface } from './pccase.model';
+import { psu_interface } from './psu.model';
+import { ram_interface } from './ram.model';
+
 
 export interface computer_interface {
-    cpu_type: string,
+    _id?: Types.ObjectId,
+    cpu_type: CpuType,
     name: string,
     description: string,
-    case: ObjectId,
-    motherboard: ObjectId,
-    processor: ObjectId,
-    graphics_card: ObjectId,
-    ram: ObjectId,
-    fonte: ObjectId
+    pccase: Types.ObjectId | pc_case_interface,
+    motherboard: Types.ObjectId | motherboard_interface,
+    cpu: Types.ObjectId | cpu_interface,
+    gpu: Types.ObjectId | gpu_interface,
+    ram: Types.ObjectId | ram_interface,
+    psu: Types.ObjectId | psu_interface,
+    cooler?: Types.ObjectId | cooler_interface
 }
 
 const computer_schema = new Schema<computer_interface>(
     {
-        cpu_type: { type: String, required: true },
+        cpu_type: { type: String, enum: Object.values(CpuType), required: true },
         name: { type: String, required: true },
         description: { type: String, default: '' },
-        case: { type: Schema.Types.ObjectId, required: true },
+        pccase: { type: Schema.Types.ObjectId, required: true },
         motherboard: { type: Schema.Types.ObjectId, required: true },
-        processor: { type: Schema.Types.ObjectId, required: true },
-        graphics_card: { type: Schema.Types.ObjectId, required: true },
+        cpu: { type: Schema.Types.ObjectId, required: true },
+        gpu: { type: Schema.Types.ObjectId, required: true },
         ram: { type: Schema.Types.ObjectId, required: true },
-        fonte: { type: Schema.Types.ObjectId, required: true }
+        psu: { type: Schema.Types.ObjectId, required: true },
+        cooler: { type: Schema.Types.ObjectId, required: false }
     },
     { timestamps: true } 
 )
 
-const Computer = model('Computer', computer_schema);
+const computer = model('Computer', computer_schema);
 
-export default Computer;
+export default computer;
