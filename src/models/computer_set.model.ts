@@ -5,11 +5,11 @@ export interface computer_set_interface {
     _id?: Types.ObjectId,
     name: string,
     computers: Types.DocumentArray<computer_interface>
-    createdAt?: Date,
-    updatedAt?: Date
+    createdAt?: Date | string,
+    updatedAt?: Date | string
 }
 
-const computer_set_schema = new Schema<computer_set_interface>( 
+export const computer_set_schema = new Schema<computer_set_interface>( 
     {
         name: { type: String, required: true },
         computers: [computer]

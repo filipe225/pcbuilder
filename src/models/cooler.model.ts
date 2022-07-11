@@ -5,8 +5,8 @@ export interface cooler_interface {
     _id?: Types.ObjectId,
     name: string,
     stores: store_interface[],
-    createdAt?: Date,
-    updatedAt?: Date
+    createdAt?: Date | string,
+    updatedAt?: Date | string
 }
 
 const cooler_schema = new Schema<cooler_interface>(

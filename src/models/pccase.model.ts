@@ -28,7 +28,10 @@ export interface pc_case_interface {
     Standard_Expansion_Slots: number,
     Vertical_Expansion_Slots: number,
 
-    stores: store_interface[]
+    stores: store_interface[],
+    
+    createdAt?: Date | string,
+    updatedAt?: Date | string
 }
 
 const pc_case_schema = new Schema<pc_case_interface>({

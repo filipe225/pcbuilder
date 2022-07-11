@@ -20,7 +20,9 @@ export interface computer_interface {
     gpu: Types.ObjectId | gpu_interface,
     ram: Types.ObjectId | ram_interface,
     psu: Types.ObjectId | psu_interface,
-    cooler?: Types.ObjectId | cooler_interface
+    cooler?: Types.ObjectId | cooler_interface,    
+    createdAt?: Date | string,
+    updatedAt?: Date | string
 }
 
 const computer_schema = new Schema<computer_interface>(

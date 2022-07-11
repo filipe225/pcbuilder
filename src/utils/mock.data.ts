@@ -1,11 +1,10 @@
 import { model } from 'mongoose';
 import Computer from "../models/computer.model";
+import { computer_set_interface } from '../models/computer_set.model';
+import { cpu_interface } from '../models/cpu.model';
 import Product from '../models/product.model';
-import User from '../models/user.model';
+import { CpuType, Manufacturer } from './enums';
 
-export let Computers: any = [];
-export let Products: any = [];
-export let Users: any = [];
 
 function getRandomCumpter() {
     return new Computer({
@@ -42,25 +41,31 @@ function getRandomNumber() {
 }
 
 
-Computers = [
-    new Computer({
-        ram: '2x8gb',
-        processor: 'ryzen 5 3600',
-        graphics_card: '6700xt',
-        motherboard: 'aorus elite v2',
-        case: 'mastercooler box 500',
-        cpu_type: 'amd',
-        description: 'Descrição teste',
-        fonte: '650w'
-    }),
-    new Computer({
-        ram: '2x8gb',
-        processor: 'ryzen 5 3600',
-        graphics_card: '6700xt',
-        motherboard: 'aorus elite v2',
-        case: 'mastercooler box 500',
-        cpu_type: 'amd',
-        description: 'Descrição teste',
-        fonte: '650w'
-    })
-]
+export const Computers: any = {
+    _id: 'computer__01',
+    name: 'Computador de Entrada',
+    computers: [
+        {
+            cpu_type: CpuType.AMD,
+            cpu: { name: 'ryzen 5 3600' },
+            psu: { name: 'rm 800 W' },
+            gpu: { name: 'nvidia 3060TI' },
+            motherboard: { name: 'b450 aorus elite v2' },
+            pccase: { name: 'lian li dynamic o11' },
+            ram: { name: 'gskill 3600Mhz 2x8GB' },
+            storage: { name: 'samsung 500gb ssd m.2' }
+        },
+        {
+            cpu_type: CpuType.Intel,
+            cpu: { name: 'i3 12100' },
+            psu: { name: 'rm 800 W' },
+            gpu: { name: 'nvidia 3060TI' },
+            motherboard: { name: 'z490 aorus elite v2' },
+            pccase: { name: 'lian li dynamic o11' },
+            ram: { name: 'gskill 3600Mhz 2x8GB' },
+            storage: { name: 'samsung 500gb ssd m.2' }
+        }
+    ],
+    createdAt: new Date().getDate().toLocaleString(),
+    updatedAt: Date.now().toLocaleString()
+}

@@ -18,7 +18,9 @@ export interface gpu_interface {
     power_consumption: number,
     power_comsumption_unit: PowerConsumptionUnit,
     dimensions: string,
-    stores: store_interface[]
+    stores: store_interface[],
+    createdAt?: Date | string,
+    updatedAt?: Date | string
 }
 
 const gpu_schema = new Schema<gpu_interface>(

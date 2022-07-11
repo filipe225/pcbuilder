@@ -9,6 +9,8 @@ export interface product_interface {
     currency?: string
     image_link?: string,
     store_link: string,
+    createdAt?: Date | string,
+    updatedAt?: Date | string
 }
 
 

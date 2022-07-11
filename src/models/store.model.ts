@@ -10,8 +10,8 @@ export interface store_interface {
     discount: number,
     availability: Availability,
     link: string,
-    created_at?: Date,
-    updated_at?: Date
+    createdAt?: Date | string,
+    updatedAt?: Date | string
 }
 
 export const store_schema = new Schema<store_interface>(

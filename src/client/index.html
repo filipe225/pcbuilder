@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Escolhe Por Mim</title>
+    <script defer src="https://unpkg.com/alpinejs@3.10.2/dist/cdn.min.js"></script>
+</head>
+<body>
+    <script>
+        window.onload = function() {
+            console.log('Hello World');
+        }
+        document.addEventListener("alpine:init", () => {
+            Alpine.data("computer_data", () => ({
+                computers_info: {},
+                
+                async init() {
+                    const res = await fetch('http://localhost:7000/api/test/computers');
+                    const data = await res.json();
+                    this.computers_info = data;   
+                }
+            }));
+        });
+    </script>
+
+    <!-- TODO -->
+    <nav>
+        Escolhe Por Mim
+        <div class="menu">
+            <a href="/login">Login</a>
+        </div>
+    </nav>
+
+    <section class="info">
+        <p>
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Cum magni fugiat nihil, ipsa dolorum harum culpa possimus sunt hic. 
+            Saepe quam omnis amet iste iure itaque, quisquam, necessitatibus officia, repellat placeat quo labore neque voluptates in. Voluptatum, 
+            libero harum rerum quibusdam temporibus architecto doloremque, possimus eos perferendis, error dignissimos voluptatibus!
+        </p>
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nobis ut ipsam ea consequatur consectetur, 
+            minima nesciunt deserunt quaerat tempora sint neque dolores adipisci facere cumque iste ipsum autem similique. 
+            Officia eveniet nobis fugiat debitis odit eligendi possimus rem quos veniam.            
+        </p>
+    </section>
+
+    <section x-data="computer_data" class="computers">
+        <div class="card">
+            <a href="http://" x-text="computers_info.name"></a>
+        </div>
+
+        <template x-for="computer in computers_info.computers">        
+            <table>
+                <thead>
+                    <th>Fabricante CPU</th>
+                    <th>MotherBoard</th>
+                    <th>Processador</th>
+                    <th>RAM</th>
+                    <th>Gráfica</th>
+                    <th>Caixa PC</th>
+                    <th>Fonte</th>
+                    <th>Dissipador</th>
+                </thead>
+                <tbody>
+                        <tr x-data="computer">
+                            <td></td>
+                            <td x-text="computer.motherboard.name"></td>
+                            <td x-text="computer.cpu.name"></td>
+                            <td x-text="computer.ram.name"></td>
+                            <td x-text="computer.gpu.name"></td>
+                            <td x-text="computer.pccase.name"></td>
+                            <td x-text="computer.psu.name"></td>
+                        </tr>
+                
+                </tbody>
+            </table>                
+        </template>    
+
+    </section>
+
+
+</body>
+</html>

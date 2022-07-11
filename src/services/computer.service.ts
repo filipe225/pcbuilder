@@ -7,6 +7,7 @@ import motherboard_model, { motherboard_interface } from "../models/motherboard.
 import pc_case_model, { pc_case_interface } from "../models/pccase.model";
 import psu_model, { psu_interface } from "../models/psu.model";
 import ram_model, { ram_interface } from "../models/ram.model";
+import { Computers } from "../utils/mock.data";
 
 export async function getAllComputers(req: Request, res: Response) {
     try {
@@ -42,4 +43,8 @@ export async function getComputerById(req: Request, res: Response) {
     } catch (error: any) {
         throw new Error(error);
     }
+}
+
+export function getMockData(req: Request, res: Response) {
+    res.json(Computers);
 }

@@ -1,7 +1,8 @@
 import puppeteer from "puppeteer";
 import mongoose from "mongoose";
 import cpu_model from "../models/cpu.model";
-import { StoreName, store_interface } from "../models/store.model";
+import { StoreName } from "../utils/enums";
+import { store_interface } from "../models/store.model";
 import { getProductInfoFromGlobalData, getProductInfoFromPcComponentes, getProductInfoFromPCDiga } from "./utils";
 import case_model from "../models/pccase.model";
 import pc_case_model from "../models/pccase.model";

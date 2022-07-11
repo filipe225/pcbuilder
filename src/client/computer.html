@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Escolhe Por Mim</title>
+    <script defer src="https://unpkg.com/alpinejs@3.10.2/dist/cdn.min.js"></script>
+</head>
+<body>
+    
+    <h3>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Debitis, voluptatibus!</h3>
+
+    <h4>Lorem ipsum dolor sit amet consectetur adipisicing.</h4>
+
+    <div class="description" x-data="computer">
+        <p x-text="computer.description"></p>
+    </div>
+
+    <section class="computer-info" x-data="computer">
+        <div class="intel" x-show="computer.intel"></div>
+    </section>
+
+    <section class="computer-info" x-data="computer">
+        <div class="intel" x-show="computer.amd"></div>
+    </section>
+
+    <script>
+        window.onload = function() {
+            console.log("Hello World");
+            const computer_info = getComputerInfo();
+            Alpine.store('computer', computer_info);
+        }
+
+        function getComputerInfo() {
+            const params = new URLSearchParams(window.location.search);
+            if( !params.has('computador') ) {
+                console.error('no param computador');
+            }
+        
+            const computer_id = params.get('computador');
+            const computer_info = fetchComputerInfo(computer_id);
+            return computer_info;
+        }
+
+        function fetchComputerInfo(computer_id) {
+            return fetch(`http://localhost:7000/api/computer/${computer_id}`)
+                    .then( data => data.json())
+                    .catch( error => console.error(error));
+        }
+
+    </script>
+</body>
+</html>

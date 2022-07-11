@@ -1,5 +1,5 @@
 import express, { Router, Request, Response, NextFunction } from "express";
-import { getAllComputers, getComputerById } from "../services/computer.service";
+import { getAllComputers, getComputerById, getMockData } from "../services/computer.service";
 
 /*
     / homepage
@@ -13,6 +13,8 @@ const api_router: Router = express.Router();
 
 //api_router.get('/user');
 //api_router.post('/user_registration', registerUser);
+
+api_router.get('/test/computers', getMockData);
 
 api_router.get('/computers', getAllComputers);
 

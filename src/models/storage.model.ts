@@ -7,8 +7,8 @@ export interface storage_interface {
     name: string,
     type: StorageType,
     timings?: string,
-    createdAt?: Date,
-    updatedAt?: Date
+    createdAt?: Date | string,
+    updatedAt?: Date | string
 }
 
 const storage_schema = new Schema<storage_interface>(

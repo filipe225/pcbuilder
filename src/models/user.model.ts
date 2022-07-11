@@ -6,8 +6,8 @@ export interface user_interface {
     email: string,
     name: string,
     password: string,
-    createdAt: Date,
-    updatedAt: Date,
+    createdAt?: Date | string,
+    updatedAt?: Date | string
     comparePassword(candidatePassword: string): Promise<boolean>;
 }
 

@@ -1,5 +1,6 @@
 import puppeteer from 'puppeteer';
-import { Availability, StoreName, store_interface } from '../models/store.model';
+import { Availability, StoreName } from "../utils/enums";
+import { store_interface } from '../models/store.model';
 
 /* 
     FUNCTIONS ->

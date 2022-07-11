@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { StoreName } from '../models/store.model';
+import { StoreName } from "../utils/enums";
 import { getProductById } from "./database.service";
 
 export async function getAllThings(req: Request, res: Response) {

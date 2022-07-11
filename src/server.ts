@@ -4,8 +4,6 @@ import 'dotenv/config';
 
 import { connectToDatabase } from './utils/db.connection';
 import api_router from './routes/api.routes';
-import test_router from './routes/test.routes';
-import account_router from './routes/account.routes';
 
 const app = express();
 
@@ -17,14 +15,7 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-
-app.use('/account', account_router);
-
-// TODO
-// TEST ROUTES THEN REMOVE THIS
-app.use('/test', test_router);
-//TODO
-// ADD MIDDLEWARE TO API CALLS
+// API
 app.use('/api', api_router);
 
 /** Error handling */
