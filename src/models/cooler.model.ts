@@ -12,7 +12,7 @@ export interface cooler_interface {
 const cooler_schema = new Schema<cooler_interface>(
     {
         name: { type: String, required: true },
-        stores: [store_schema]
+        stores: { type: [store_schema] }
     },
     { timestamps: true }
 )

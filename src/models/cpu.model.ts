@@ -8,22 +8,30 @@ export interface cpu_interface {
     _id?: Types.ObjectId,
     name: string,
     manufacturer: Manufacturer,
+
     socket?: Socket,
     cores?: number,
     threads?: number,
+
     base_frequency?: number,
     max_frequency?: number,
     frequency_unit?: FrequencyUnit
+
     cache?: number,
     cache_unit?: CacheUnit,
+
     architecture?: Architecture,
     integrated_gpu?: boolean,
     ram_technology?: RamTechonology,
-    tdp?: number,
-    tdp_unit?: TdpUnit,
     overclock_tutorial?: string,
     year_of_release?: Date,
+
+    tdp?: number,
+    tdp_unit?: TdpUnit,
+
+    // could be Types.Array<store_interface> but it caused problems in the middlewares
     stores?: store_interface[],
+
     createdAt?: Date | string,
     updatedAt?: Date | string
 }

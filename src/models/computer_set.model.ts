@@ -12,7 +12,7 @@ export interface computer_set_interface {
 export const computer_set_schema = new Schema<computer_set_interface>( 
     {
         name: { type: String, required: true },
-        computers: [computer]
+        computers: { type: [computer] }
     },
     {
         timestamps: true
