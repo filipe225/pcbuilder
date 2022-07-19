@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/spine.css">
+</head>
+<body>
+
+    <script>
+        window.onload = function() {
+            console.log('Hello World');
+        }
+        document.addEventListener("alpine:init", () => {
+            Alpine.data("product_data", () => ({
+                computers_info: {},
+                
+                async init() {
+                    const url = window.location.search;
+                    console.log(url);
+                    const product = url[0];
+                    const res = await fetch('http://localhost:7000/api/test/computers');
+                    const data = await res.json();
+                    this.computers_info = data;   
+                }
+            }));
+        });
+    </script>
+    
+
+
+
+</body>
+</html>
