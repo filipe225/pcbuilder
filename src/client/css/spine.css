@@ -1,0 +1,58 @@
+
+:root {
+    --purple: #7400B8;
+    --blue-green: #2F97C1;
+    --turquoise: #1CCAD8;
+    --dark-turquoise: #15E6CD;
+    --spring-green: #0CF574;
+
+    --size-main: 3rem;
+    --size-secondary: 1.5rem;
+    --size-terciary: 0.75rem;
+
+    --y-gap: 15px;
+    --x-gap: 10px; 
+
+}
+
+
+/* CSS RESETTER */
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+* {
+    margin: 0;
+}
+html, body {
+    height: 100%;
+}
+body {
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+}
+img, picture, video, canvas, svg {
+    display: block;
+    max-width: 100%;
+}
+input, button, textarea, select {
+    font: inherit;
+}
+p, h1, h2, h3, h4, h5, h6 {
+    overflow-wrap: break-word;
+}
+#root, #__next {
+    isolation: isolate;
+}
+
+
+/* BASIC SETTERS */
+
+h1, h2, h3, h4, h5, h6 {
+    color: var(--purple);
+}
+
+
+section, .section {
+    margin: var(--y-gap) var(--x-gap);
+    background-color: var(--spring-green);
+}
