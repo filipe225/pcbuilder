@@ -2,7 +2,7 @@ import { Request, Response } from "express";
 import { StoreName } from "../utils/enums";
 import { getProductById } from "./database.service";
 
-export async function getAllThings(req: Request, res: Response) {
+export async function getAllMotherboards(req: Request, res: Response) {
     try {
         
     } catch (error: any) {
@@ -10,10 +10,10 @@ export async function getAllThings(req: Request, res: Response) {
     }
 }
 
-export function addNewThings(req: Request, res: Response) {
+export function addNewMotherboard(req: Request, res: Response) {
 
 }
-export async function createThings(req: Request, res: Response) {
+export async function createMotherboard(req: Request, res: Response) {
     try {
         
     } catch (error: any) {
@@ -21,7 +21,7 @@ export async function createThings(req: Request, res: Response) {
     }
 }
 
-export async function getThingsToUpdate(req: Request, res: Response) {
+export async function getMotherboardToUpdate(req: Request, res: Response) {
     try {
         
     } catch (error: any) {
@@ -29,7 +29,7 @@ export async function getThingsToUpdate(req: Request, res: Response) {
     }
 }
 
-export async function updateThings(req: Request, res: Response) {
+export async function updateMotherboard(req: Request, res: Response) {
     try {
         
     } catch (error: any) {
@@ -37,7 +37,7 @@ export async function updateThings(req: Request, res: Response) {
     }
 }
 
-export async function getThingsToDelete(req: Request, res: Response) {
+export async function getMotherboardToDelete(req: Request, res: Response) {
     try {
         
     } catch (error: any) {
@@ -45,7 +45,7 @@ export async function getThingsToDelete(req: Request, res: Response) {
     }
 }
 
-export async function deleteThings(req: Request, res: Response) {
+export async function deleteMotherboard(req: Request, res: Response) {
     try {
         
     } catch (error: any) {

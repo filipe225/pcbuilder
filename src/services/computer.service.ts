@@ -18,6 +18,54 @@ export async function getAllComputers(req: Request, res: Response) {
     }
 }
 
+export async function addNewComputer(req: Request, res: Response) {
+    try {
+        
+    } catch (error: any) {
+       throw new Error(error); 
+    }
+}
+
+export async function createComputer(req: Request, res: Response) {
+    try {
+        
+    } catch (error: any) {
+       throw new Error(error); 
+    }
+}
+
+export async function getComputerToUpdate(req: Request, res: Response) {
+    try {
+        
+    } catch (error: any) {
+       throw new Error(error); 
+    }
+}
+
+export async function updateComputer(req: Request, res: Response) {
+    try {
+        
+    } catch (error: any) {
+       throw new Error(error); 
+    }
+}
+
+export async function getComputerToDelete(req: Request, res: Response) {
+    try {
+        
+    } catch (error: any) {
+       throw new Error(error); 
+    }
+}
+
+export async function deleteComputer(req: Request, res: Response) {
+    try {
+        
+    } catch (error: any) {
+       throw new Error(error); 
+    }
+}
+
 export async function getComputerById(req: Request, res: Response) {
     try {
         const computer_id = req.params.id;

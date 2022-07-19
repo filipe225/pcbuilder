@@ -2,7 +2,7 @@ import { Request, Response } from "express";
 import { StoreName } from "../utils/enums";
 import { getProductById } from "./database.service";
 
-export async function getAllThings(req: Request, res: Response) {
+export async function getAllPcCases(req: Request, res: Response) {
     try {
         
     } catch (error: any) {
@@ -10,10 +10,10 @@ export async function getAllThings(req: Request, res: Response) {
     }
 }
 
-export function addNewThings(req: Request, res: Response) {
+export function addNewPcCase(req: Request, res: Response) {
 
 }
-export async function createThings(req: Request, res: Response) {
+export async function createPcCase(req: Request, res: Response) {
     try {
         
     } catch (error: any) {
@@ -21,7 +21,7 @@ export async function createThings(req: Request, res: Response) {
     }
 }
 
-export async function getThingsToUpdate(req: Request, res: Response) {
+export async function getPcCaseToUpdate(req: Request, res: Response) {
     try {
         
     } catch (error: any) {
@@ -29,7 +29,7 @@ export async function getThingsToUpdate(req: Request, res: Response) {
     }
 }
 
-export async function updateThings(req: Request, res: Response) {
+export async function updatePcCase(req: Request, res: Response) {
     try {
         
     } catch (error: any) {
@@ -37,7 +37,7 @@ export async function updateThings(req: Request, res: Response) {
     }
 }
 
-export async function getThingsToDelete(req: Request, res: Response) {
+export async function getPcCaseToDelete(req: Request, res: Response) {
     try {
         
     } catch (error: any) {
@@ -45,7 +45,7 @@ export async function getThingsToDelete(req: Request, res: Response) {
     }
 }
 
-export async function deleteThings(req: Request, res: Response) {
+export async function deletePcCase(req: Request, res: Response) {
     try {
         
     } catch (error: any) {
