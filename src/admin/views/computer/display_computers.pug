@@ -1,0 +1,24 @@
+
+extends ../template.pug 
+
+block content
+    
+    .columns
+        .column 
+            a(href="/admin/computer/add_computer") Add new Computer
+    .columns
+        table.column 
+            thead
+                tr
+                    th 
+                    th 
+                    th 
+                    th 
+                    th 
+            tbody
+                each computer in all_computers
+                    tr
+                        td= computer._id
+                        td= computer.name
+                            a(href="/admin/computer/update_computer/" + computer._id ) Update computer 
+                            a(href="/admin/computer/delete_computer/" + computer._id ) Delete computer  

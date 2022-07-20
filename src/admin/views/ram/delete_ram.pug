@@ -2,12 +2,11 @@
 extends ../template.pug 
 
 block content 
-    - var ram_info = #{ram};
-    form(action="/delete_ram/#{ram_info._id}", method="delete")
+
+    form(action= "/admin/ram/delete_ram/" + ram_info._id + '?_method=DELETE', method="POST")
         .columns
             .column.field.form-element
-                label.label(for="name") Name
-                input#input_name(type="text", name="name")
+                label.label= ram_info.name
         .columns 
             .column.field.form-element
                 input(type="submit", value="Submit")

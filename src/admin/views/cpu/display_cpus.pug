@@ -4,7 +4,10 @@ extends ../template.pug
 block content
     
     .columns
-        table 
+        .column 
+            a(href="/admin/cpu/add_cpu") Add new CPU
+    .columns
+        table.column 
             thead
                 tr
                     th 
@@ -17,5 +20,5 @@ block content
                     tr
                         td= cpu._id
                         td= cpu.name
-                            a(href="/admin/cpu/update_cpu/" + cpu._id ) Update Cpu 
+                        td  a(href="/admin/cpu/update_cpu/" + cpu._id ) Update Cpu 
                             a(href="/admin/cpu/delete_cpu/" + cpu._id ) Delete Cpu  

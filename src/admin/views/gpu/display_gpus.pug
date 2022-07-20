@@ -1,0 +1,26 @@
+
+extends ../template.pug
+
+
+block content 
+
+    h2 Graphic Cards 
+    .columns
+        .column 
+            a(href="/admin/gpu/add_gpu") Add new GPU
+    .columns
+        table.column 
+            thead
+                tr
+                    th 
+                    th 
+                    th 
+                    th 
+                    th 
+            tbody
+                each gpu in all_gpus
+                    tr
+                        td= gpu._id
+                        td= gpu.name
+                            a(href="/admin/gpu/update_gpu/" + gpu._id ) Update GPU 
+                            a(href="/admin/gpu/delete_gpu/" + gpu._id ) Delete GPU  

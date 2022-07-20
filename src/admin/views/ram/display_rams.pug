@@ -1,0 +1,26 @@
+
+extends ../template.pug
+
+
+block content 
+
+    h2 RAM
+    .columns
+        .column 
+            a(href="/admin/ram/add_ram") Add new RAM
+    .columns
+        table.column 
+            thead
+                tr
+                    th 
+                    th 
+                    th 
+                    th 
+                    th 
+            tbody
+                each ram in all_rams
+                    tr
+                        td= ram._id
+                        td= ram.name
+                            a(href="/admin/ram/update_ram/" + ram._id ) Update RAM 
+                            a(href="/admin/ram/delete_ram/" + ram._id ) Delete RAM  

@@ -1,0 +1,28 @@
+
+
+extends ../template.pug
+
+
+block content 
+
+    h2 PC Cases
+    .columns
+        .column 
+            a(href="/admin/pccase/add_pccase") Add new Case
+    .columns
+        table.column 
+            thead
+                tr
+                    th 
+                    th 
+                    th 
+                    th 
+                    th 
+            tbody
+                each pccase in all_pccases
+                    tr
+                        td= pccase._id
+                        td= pccase.name
+                            a(href="/admin/pccase/update_pccase/" + pccase._id ) Update PC Case 
+                            a(href="/admin/pccase/delete_pccase/" + pccase._id ) Delete PC Case  
+ 

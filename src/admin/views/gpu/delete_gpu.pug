@@ -3,11 +3,10 @@ extends ../template.pug
 
 block content 
 
-    form(action="/delete_gpu/#{gpu_info._id}", method="delete")
+    form(action= "/admin/gpu/delete_gpu/" + gpu_info._id + '?_method=DELETE', method="POST")
         .columns
             .column.field.form-element
-                label.label(for="name") Name
-                input#input_name(type="text", name="name")
+                label.label= gpu_info.name
         .columns 
             .column.field.form-element
                 input(type="submit", value="Submit")

@@ -1,0 +1,13 @@
+
+extends ../template.pug 
+
+block content
+    form(action="/admin/motherboard/add_new_motherboard", method="post")
+        h3 Add new Motherboard
+        .columns
+            .column.field.form-element
+                label.label(for="name") Name
+                input#input_name(type="text", name="name")
+        .columns 
+            .field.form-element
+                input(type="submit", value="Submit")

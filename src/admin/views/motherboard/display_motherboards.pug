@@ -1,0 +1,27 @@
+
+
+extends ../template.pug
+
+
+block content 
+
+    h2 MotherBoards
+    .columns
+        .column 
+            a(href="/admin/motherboard/add_motherboard") Add new Motherboard
+    .columns
+        table.column 
+            thead
+                tr
+                    th 
+                    th 
+                    th 
+                    th 
+                    th 
+            tbody
+                each motherboard in all_motherboards
+                    tr
+                        td= motherboard._id
+                        td= motherboard.name
+                            a(href="/admin/motherboard/update_motherboard/" + motherboard._id ) Update motherboard 
+                            a(href="/admin/motherboard/delete_motherboard/" + motherboard._id ) Delete motherboard  

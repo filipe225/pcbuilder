@@ -1,6 +1,8 @@
 
+extends ../template.pug 
+
 block content
-    form(action="/add_new_cpu", method="post")
+    form(action="/admin/cpu/add_new_cpu", method="post")
         h3 Add new CPU
         .columns
             .column.field.form-element
@@ -54,8 +56,8 @@ block content
             .column.field.form-element
                 label.label(for="ram_technology") RAM Technology
                 select#input_ram_technology(name="ram_technology")
-                    option(value="ddr4") DDR4
-                    option(value="ddr5") DDR5    
+                    each val, index in [...ram_technology]
+                        option(val= val, selected= index === 0)= val 
         .columns 
             .column.field.form-element
                 label.label(for="tdp") TDP

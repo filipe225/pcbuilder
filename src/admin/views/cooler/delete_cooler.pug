@@ -3,10 +3,10 @@ extends ../template.pug
 
 block content 
 
-    form(action= "/admin/psu/delete_psu/" + psu_info._id + '?_method=DELETE', method="POST")
+    form(action= "/admin/cooler/delete_cooler/" + cooler_info._id + '?_method=DELETE', method="POST")
         .columns
             .column.field.form-element
-                label.label= psu_info.name
+                label.label= cooler_info.name
         .columns 
             .column.field.form-element
                 input(type="submit", value="Submit")

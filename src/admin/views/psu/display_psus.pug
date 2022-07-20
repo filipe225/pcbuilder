@@ -1,0 +1,26 @@
+
+extends ../template.pug
+
+
+block content 
+
+    h2 Power Supply Units
+    .columns
+        .column 
+            a(href="/admin/psu/add_psu") Add new PSU
+    .columns
+        table.column 
+            thead
+                tr
+                    th 
+                    th 
+                    th 
+                    th 
+                    th 
+            tbody
+                each psu in all_gpsus
+                    tr
+                        td= psu._id
+                        td= psu.name
+                            a(href="/admin/psu/update_psu/" + psu._id ) Update psu 
+                            a(href="/admin/psu/delete_psu/" + psu._id ) Delete psu  

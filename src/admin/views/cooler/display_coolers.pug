@@ -1,0 +1,24 @@
+
+extends ../template.pug 
+
+block content
+    
+    .columns
+        .column 
+            a(href="/admin/cooler/add_cooler") Add new Cpu Cooler
+    .columns
+        table.column 
+            thead
+                tr
+                    th 
+                    th 
+                    th 
+                    th 
+                    th 
+            tbody
+                each cooler in all_coolers
+                    tr
+                        td= cooler._id
+                        td= cooler.name
+                            a(href="/admin/cooler/update_cooler/" + cooler._id ) Update Cooler 
+                            a(href="/admin/cooler/delete_cooler/" + cooler._id ) Delete Cooler  
