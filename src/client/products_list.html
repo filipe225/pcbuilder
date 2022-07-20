@@ -20,10 +20,15 @@
                 async init() {
                     const url = window.location.search;
                     console.log(url);
+                    const product_type = 'cpu';
                     const product = url[0];
-                    const res = await fetch('http://localhost:7000/api/test/computers');
-                    const data = await res.json();
-                    this.computers_info = data;   
+                    try {
+                        const res = await fetch(`http://localhost:7000/api/${product_type}`);
+                        const data = await res.json();
+                        this.computers_info = data;
+                    } catch (error) {
+                        console.log(error);
+                    }
                 }
             }));
         });
