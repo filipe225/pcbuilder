@@ -6,6 +6,7 @@ import { store_interface, store_schema } from './store.model';
 
 export interface pc_case_interface {
     _id?: Types.ObjectId,
+    product_type: string,
     name: string,
 
     case_form_factor?: string
@@ -37,6 +38,7 @@ export interface pc_case_interface {
 
 const pc_case_schema = new Schema<pc_case_interface>(
     {
+        product_type: { type: String, required: true, default: 'pccase' },
         name: { type: String, required: true },
         stores: { type: [store_schema] }
     },

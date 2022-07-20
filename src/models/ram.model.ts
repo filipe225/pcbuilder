@@ -4,6 +4,7 @@ import { store_interface, store_schema } from './store.model';
 
 export interface ram_interface {
     _id?: Types.ObjectId,
+    product_type: string,
     name: string,
     stores: store_interface[],
     createdAt?: Date | string,
@@ -12,6 +13,7 @@ export interface ram_interface {
 
 const ram_schema = new Schema<ram_interface>(
     {
+        product_type: { type: String, required: true, default: 'ram' },
         name: { type: String, required: true },
         stores: { type: [store_schema] }
     },

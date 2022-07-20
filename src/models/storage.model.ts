@@ -5,6 +5,7 @@ import { store_interface, store_schema } from './store.model';
 
 export interface storage_interface {
     _id?: Types.ObjectId,
+    product_type: string,
     name: string,
     type: StorageType,
     timings?: string,
@@ -15,6 +16,7 @@ export interface storage_interface {
 
 const storage_schema = new Schema<storage_interface>(
     {
+        product_type: { type: String, required: true, default: 'storage' },
         name: { type: String, required: true },
         type: { type: String, enum: Object.values(StorageType), required: true, default: StorageType.SSD_M2 },
         timings: { type: String },

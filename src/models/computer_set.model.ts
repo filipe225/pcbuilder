@@ -4,7 +4,7 @@ import computer, { computer_interface } from './computer.model';
 export interface computer_set_interface {
     _id?: Types.ObjectId,
     name: string,
-    computers: Types.DocumentArray<computer_interface>
+    computers: Types.Array<computer_interface> | [],
     createdAt?: Date | string,
     updatedAt?: Date | string
 }

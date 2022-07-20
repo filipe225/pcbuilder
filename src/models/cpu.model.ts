@@ -6,6 +6,7 @@ import { store_interface, store_schema } from './store.model';
 
 export interface cpu_interface {
     _id?: Types.ObjectId,
+    product_type: string,
     name: string,
     manufacturer: Manufacturer,
 
@@ -39,6 +40,7 @@ export interface cpu_interface {
 
 const cpu_schema = new Schema<cpu_interface>(
     {
+        product_type: { type: String, required: true, default: 'cpu' },
         name: { type: String, required: true },
         manufacturer: { type: String, enum: Object.values(Manufacturer), required: true },
         socket: { type: String, enum: Object.values(Socket), required: true },

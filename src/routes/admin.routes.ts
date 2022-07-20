@@ -1,23 +1,36 @@
-
+import computer from "../models/computer.model";
 import express, { Router, Request, Response, NextFunction } from "express";
 
-import { createCpu, updateCpu, deleteCpu, getAllCpu, addNewCpu, getCpuToUpdate, getCpuToDelete } from '../services/cpu.service';
-import { cpuMiddlewareTransform } from '../middleware/cpu.middleware';
-import { addNewGpu, createGpu, deleteGpu, getAllGpu, getGpuToDelete, getGpuToUpdate, updateGpu } from "../services/gpu.service";
-import { gpuMiddlewareTransform } from "../middleware/gpu.middleware";
-import computer from "../models/computer.model";
-import { coolerMiddlewareTransform } from "../middleware/cooler.middleware";
-import { ramMiddlewareTransform } from "../middleware/ram.middleware";
-import { motherboardMiddlewareTransform } from "../middleware/motherboard.middleware";
-import { pc_caseMiddlewareTransform } from "../middleware/pccase.middleware";
-import { addNewMotherboard, createMotherboard, deleteMotherboard, getAllMotherboards, getMotherboardToDelete, getMotherboardToUpdate, updateMotherboard } from "../services/motherboard.service";
-import { addNewRam, createRam, deleteRam, getAllRams, getRamToDelete, getRamToUpdate, updateRam } from "../services/ram.service";
-import { addNewPsu, createPsu, deletePsu, getAllPsus, getPsuToDelete, getPsuToUpdate, updatePsu } from "../services/psu.service";
-import { addNewCooler, createCooler, deleteCooler, getAllCoolers, getCoolerToDelete, getCoolerToUpdate, updateCooler } from "../services/cooler.service";
-import { psuMiddlewareTransform } from "../middleware/psu.middleware";
-import { addNewPcCase, createPcCase, deletePcCase, getAllPcCases, getPcCaseToDelete, getPcCaseToUpdate, updatePcCase } from "../services/pccase.service";
-import { addNewComputer, createComputer, deleteComputer, getAllComputers, getComputerToDelete, getComputerToUpdate, updateComputer } from "../services/computer.service";
+import { getAllComputerSets } from "../services/computer_set.service";
+
 import { computerMiddlewareTransform } from "../middleware/computer.middleware";
+import { addNewComputer, createComputer, deleteComputer, getAllComputers, getComputerToDelete, getComputerToUpdate, updateComputer } from "../services/computer.service";
+
+import { cpuMiddlewareTransform } from '../middleware/cpu.middleware';
+import { createCpu, updateCpu, deleteCpu, getAllCpu, addNewCpu, getCpuToUpdate, getCpuToDelete } from '../services/cpu.service';
+
+import { coolerMiddlewareTransform } from "../middleware/cooler.middleware";
+import { addNewCooler, createCooler, deleteCooler, getAllCoolers, getCoolerToDelete, getCoolerToUpdate, updateCooler } from "../services/cooler.service";
+
+import { gpuMiddlewareTransform } from "../middleware/gpu.middleware";
+import { addNewGpu, createGpu, deleteGpu, getAllGpu, getGpuToDelete, getGpuToUpdate, updateGpu } from "../services/gpu.service";
+
+import { ramMiddlewareTransform } from "../middleware/ram.middleware";
+import { addNewRam, createRam, deleteRam, getAllRams, getRamToDelete, getRamToUpdate, updateRam } from "../services/ram.service";
+
+import { motherboardMiddlewareTransform } from "../middleware/motherboard.middleware";
+import { addNewMotherboard, createMotherboard, deleteMotherboard, getAllMotherboards, getMotherboardToDelete, getMotherboardToUpdate, updateMotherboard } from "../services/motherboard.service";
+
+import { pc_caseMiddlewareTransform } from "../middleware/pccase.middleware";
+import { addNewPcCase, createPcCase, deletePcCase, getAllPcCases, getPcCaseToDelete, getPcCaseToUpdate, updatePcCase } from "../services/pccase.service";
+
+import { psuMiddlewareTransform } from "../middleware/psu.middleware";
+import { addNewPsu, createPsu, deletePsu, getAllPsus, getPsuToDelete, getPsuToUpdate, updatePsu } from "../services/psu.service";
+
+
+
+
+
 
 /*
     /admin/
@@ -34,6 +47,7 @@ const motherboard_router: Router    = express.Router({mergeParams: true});
 const psu_router: Router            = express.Router({mergeParams: true});
 const pccase_router: Router         = express.Router({mergeParams: true});
 const cooler_router: Router         = express.Router({mergeParams: true});
+const storage_router: Router        = express.Router({mergeParams: true});
 const computer_router: Router       = express.Router({mergeParams: true});
 const computer_set_router: Router   = express.Router({mergeParams: true});
 
@@ -44,8 +58,8 @@ admin_router.get('/', (req: Request, res: Response, next: NextFunction) => {
 });
 
 // COMPUTER SET ROUTES
-    // computer_set_router.get('/', getComputerSets);
-    // computer_set_router.post('/new_computer_set', addComputerSet);
+computer_set_router.get('/', getAllComputerSets);
+    // computer_set_router.post('/new_computer_set', computerSetMiddlewareTransform addComputerSet);
     // computer_set_router.delete('/computer_set/:id', deleteComputerSet);
 
 // COMPUTER ROUTES
@@ -120,7 +134,20 @@ pccase_router.put('/update_pccase/:id', pc_caseMiddlewareTransform, updatePcCase
 pccase_router.get('/delete_pccase/:id', getPcCaseToDelete)
 pccase_router.delete('/delete_pccase/:id', deletePcCase);
 
+// STORAGE ROUTES
+// PC CASES ROUTES
+storage_router.get('/', getAllStorages);
+storage_router.get('/add_storage', addNewStorage);
+storage_router.post('/add_new_storage', storageMiddlewareTransform, createStorage);
+storage_router.get('/update_storage/:id', getStorageToUpdate);
+storage_router.put('/update_storage/:id', storageMiddlewareTransform, updateStorage);
+storage_router.get('/delete_storage/:id', getStorageToDelete)
+storage_router.delete('/delete_storage/:id', deleteStorage);
+
 // ADMIN ROUTER
+admin_router.use('/computer', computer_router);
+admin_router.use('/computer_set', computer_set_router);
+
 admin_router.use('/cpu', cpu_router);
 admin_router.use('/gpu', gpu_router);
 admin_router.use('/psu', psu_router);
@@ -128,5 +155,7 @@ admin_router.use('/motherboard', motherboard_router);
 admin_router.use('/pccase', pccase_router);
 admin_router.use('/ram', ram_router);
 admin_router.use('/cooler', cooler_router);
+admin_router.use('/storage', storage_router);
+
 
 export default admin_router;

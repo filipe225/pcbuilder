@@ -5,6 +5,7 @@ import { store_interface, store_schema } from './store.model';
 
 export interface gpu_interface {
     _id?: Types.ObjectId,
+    product_type: string,
     name: string,
 
     bus?: BUS,
@@ -31,6 +32,7 @@ export interface gpu_interface {
 
 const gpu_schema = new Schema<gpu_interface>(
     {
+        product_type: { type: String, required: true, default: 'gpu' },
         name: { type: String, required: true },
         bus: { type: String, enum: Object.values(BUS), required: true, default: BUS.Gen_4 },
         video_memory: { type: String },
