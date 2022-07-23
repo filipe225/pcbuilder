@@ -1,19 +1,26 @@
 extends template.pug
 
+mixin mycard(content)
+    .card.card-blue-light
+        a(href= '/admin/' + content.url, class="button")= content.text
+
 block content
 
-    .columns
-        .column
-            a(href="/admin/computers/") View Custom Computers
-        .column
-            a(href="/admin/cpu/") View Cpu's
-        .column
-            a(href="/admin/pccase/") View Computer Cases
-        .column
-            a(href="/admin/gpu/") View Graphics Card
-        .column
-            a(href="/admin/motherboard/") View MotherBoards
-        .column
-            a(href="/admin/psu/") View PSU's
-        .column
-            a(href="/admin/ram/") View RAM Sticks
+    - 
+        var buttons = [
+                { url: 'computer_set/', text: 'View Computer Sets' },
+                { url: 'computers/', text: 'View Computer List' },        
+                { url: 'cpu/', text: 'View CPU List' },
+                { url: 'cooler/', text: 'View Cooler List' },
+                { url: 'storage/', text: 'View Storage List' },
+                { url: 'pccase/', text: 'View PC Case List' },
+                { url: 'gpu/', text: 'View Graphics Card List' },      
+                { url: 'motherboard/', text: 'View Motherboard List' },
+                { url: 'psu/', text: 'View Power Supply List' },
+                { url: 'ram/', text: 'View RAM List' }
+        ]
+
+    .row
+        each button in buttons 
+            .col-4 
+                +mycard(button) 

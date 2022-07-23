@@ -1,26 +1,17 @@
 
-extends ../template.pug
+extends ../template.pug 
 
-
-block content 
-
-    h2 Power Supply Units
-    .columns
-        .column 
-            a(href="/admin/psu/add_psu") Add new PSU
-    .columns
-        table.column 
-            thead
-                tr
-                    th 
-                    th 
-                    th 
-                    th 
-                    th 
-            tbody
-                each psu in all_gpsus
-                    tr
-                        td= psu._id
-                        td= psu.name
-                            a(href="/admin/psu/update_psu/" + psu._id ) Update psu 
-                            a(href="/admin/psu/delete_psu/" + psu._id ) Delete psu  
+block content
+    .head
+        h2 Processor's List from database
+        a(href="/admin/psu/add_new_psu") Add New
+    table.styled-table
+        thead
+            tr
+                th Id
+                th Name
+                th
+                th
+        tbody
+            each psu in all_psus
+                +table_list(psu)

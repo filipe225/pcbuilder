@@ -1,0 +1,17 @@
+
+extends ../template.pug 
+
+block content
+    .head
+        h2 Processor's List from database
+        a(href="/admin/storage/add_new_storage") Add New
+    table.styled-table
+        thead
+            tr
+                th Id
+                th Name
+                th
+                th
+        tbody
+            each storage in all_storages
+                +table_list(storage)

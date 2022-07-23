@@ -1,26 +1,17 @@
 
-extends ../template.pug
+extends ../template.pug 
 
-
-block content 
-
-    h2 Graphic Cards 
-    .columns
-        .column 
-            a(href="/admin/gpu/add_gpu") Add new GPU
-    .columns
-        table.column 
-            thead
-                tr
-                    th 
-                    th 
-                    th 
-                    th 
-                    th 
-            tbody
-                each gpu in all_gpus
-                    tr
-                        td= gpu._id
-                        td= gpu.name
-                            a(href="/admin/gpu/update_gpu/" + gpu._id ) Update GPU 
-                            a(href="/admin/gpu/delete_gpu/" + gpu._id ) Delete GPU  
+block content
+    .head
+        h2 Processor's List from database
+        a(href="/admin/cpu/add_new_gpu") Add New
+    table.styled-table
+        thead
+            tr
+                th Id
+                th Name
+                th
+                th
+        tbody
+            each gpu in all_gpus
+                +table_list(gpu)
