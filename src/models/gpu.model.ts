@@ -5,7 +5,7 @@ import { store_interface, store_schema } from './store.model';
 
 export interface gpu_interface {
     _id?: Types.ObjectId,
-    product_type: string,
+    product_type?: string,
     name: string,
 
     bus?: BUS,

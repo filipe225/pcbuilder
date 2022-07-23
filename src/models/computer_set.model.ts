@@ -1,5 +1,5 @@
 import { Schema, model, Types } from 'mongoose';
-import computer, { computer_interface } from './computer.model';
+import { computer_interface, computer_schema } from './computer.model';
 
 export interface computer_set_interface {
     _id?: Types.ObjectId,
@@ -12,7 +12,7 @@ export interface computer_set_interface {
 export const computer_set_schema = new Schema<computer_set_interface>( 
     {
         name: { type: String, required: true },
-        computers: { type: [computer] }
+        computers: [computer_schema]
     },
     {
         timestamps: true

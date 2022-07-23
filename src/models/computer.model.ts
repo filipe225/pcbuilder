@@ -25,7 +25,7 @@ export interface computer_interface {
     updatedAt?: Date | string
 }
 
-const computer_schema = new Schema<computer_interface>(
+export const computer_schema = new Schema<computer_interface>(
     {
         cpu_type: { type: String, enum: Object.values(CpuType), required: true },
         name: { type: String, required: true },

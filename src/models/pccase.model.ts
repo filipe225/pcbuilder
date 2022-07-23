@@ -6,7 +6,7 @@ import { store_interface, store_schema } from './store.model';
 
 export interface pc_case_interface {
     _id?: Types.ObjectId,
-    product_type: string,
+    product_type?: string,
     name: string,
 
     case_form_factor?: string
