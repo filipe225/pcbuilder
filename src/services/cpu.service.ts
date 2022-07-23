@@ -3,7 +3,7 @@ import cpu_model, { cpu_interface,  } from '../models/cpu.model';
 import { Architecture, FrequencyUnit, Manufacturer, Socket, TdpUnit, CacheUnit, RamTechonology, StoreName } from '../utils/enums';
 import { getProductById } from "./database.service";
 
-export async function getAllCpu(req: Request, res: Response) { 
+export async function getAllCpus(req: Request, res: Response) { 
     try {
         const all_cpus = await cpu_model.find();
         res.render('display_cpus', { all_cpus });

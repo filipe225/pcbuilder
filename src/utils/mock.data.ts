@@ -1,8 +1,4 @@
-import { model } from 'mongoose';
 import Computer from "../models/computer.model";
-import { computer_set_interface } from '../models/computer_set.model';
-import { cpu_interface } from '../models/cpu.model';
-import Product from '../models/product.model';
 import { CpuType, Manufacturer } from './enums';
 
 
@@ -18,18 +14,6 @@ function getRandomCumpter() {
         processor: '',
         ram: ''
     });
-}
-
-function getRandomProduct() {
-    return new Product({
-        currency: '',
-        description: '',
-        image_link: '',
-        name: '',
-        price: '',
-        store_link: '',
-        type: ''
-    })
 }
 
 function getRandomName() {

@@ -7,7 +7,7 @@ import { computerMiddlewareTransform } from "../middleware/computer.middleware";
 import { addNewComputer, createComputer, deleteComputer, getAllComputers, getComputerToDelete, getComputerToUpdate, updateComputer } from "../services/computer.service";
 
 import { cpuMiddlewareTransform } from '../middleware/cpu.middleware';
-import { createCpu, updateCpu, deleteCpu, getAllCpu, addNewCpu, getCpuToUpdate, getCpuToDelete } from '../services/cpu.service';
+import { createCpu, updateCpu, deleteCpu, getAllCpus, addNewCpu, getCpuToUpdate, getCpuToDelete } from '../services/cpu.service';
 
 import { coolerMiddlewareTransform } from "../middleware/cooler.middleware";
 import { addNewCooler, createCooler, deleteCooler, getAllCoolers, getCoolerToDelete, getCoolerToUpdate, updateCooler } from "../services/cooler.service";
@@ -26,10 +26,6 @@ import { addNewPcCase, createPcCase, deletePcCase, getAllPcCases, getPcCaseToDel
 
 import { psuMiddlewareTransform } from "../middleware/psu.middleware";
 import { addNewPsu, createPsu, deletePsu, getAllPsus, getPsuToDelete, getPsuToUpdate, updatePsu } from "../services/psu.service";
-
-
-
-
 
 
 /*
@@ -72,7 +68,7 @@ computer_router.get('/delete_computer/:id', getComputerToDelete);
 computer_router.delete('/delete_computer/:id', deleteComputer);
 
 // CPU ROUTES
-cpu_router.get('/', getAllCpu);
+cpu_router.get('/', getAllCpus);
 cpu_router.get('/add_cpu', addNewCpu);
 cpu_router.post('/add_new_cpu', cpuMiddlewareTransform, createCpu);
 cpu_router.get('/update_cpu/:id', getCpuToUpdate);
@@ -135,14 +131,13 @@ pccase_router.get('/delete_pccase/:id', getPcCaseToDelete)
 pccase_router.delete('/delete_pccase/:id', deletePcCase);
 
 // STORAGE ROUTES
-// PC CASES ROUTES
-storage_router.get('/', getAllStorages);
-storage_router.get('/add_storage', addNewStorage);
-storage_router.post('/add_new_storage', storageMiddlewareTransform, createStorage);
-storage_router.get('/update_storage/:id', getStorageToUpdate);
-storage_router.put('/update_storage/:id', storageMiddlewareTransform, updateStorage);
-storage_router.get('/delete_storage/:id', getStorageToDelete)
-storage_router.delete('/delete_storage/:id', deleteStorage);
+// storage_router.get('/', getAllStorages);
+// storage_router.get('/add_storage', addNewStorage);
+// storage_router.post('/add_new_storage', storageMiddlewareTransform, createStorage);
+// storage_router.get('/update_storage/:id', getStorageToUpdate);
+// storage_router.put('/update_storage/:id', storageMiddlewareTransform, updateStorage);
+// storage_router.get('/delete_storage/:id', getStorageToDelete)
+// storage_router.delete('/delete_storage/:id', deleteStorage);
 
 // ADMIN ROUTER
 admin_router.use('/computer', computer_router);
