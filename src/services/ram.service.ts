@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import ram_model from "../models/ram.model";
+import ram_model, { ram_interface } from "../models/ram.model";
 import { StoreName } from "../utils/enums";
 import { getProductById } from "./database.service";
 
@@ -13,13 +13,17 @@ export async function getAllRams(req: Request, res: Response) {
 }
 
 export function addNewRam(req: Request, res: Response) {
-
+    res.render('add_ram', { } ); 
 }
 export async function createRam(req: Request, res: Response) {
     try {
-        
-    } catch (error: any) {
-        throw new Error(error);
+        const result = await ram_model.create<ram_interface>(res.locals.ram);
+        console.log(result);
+        res.statusCode = 200;
+        res.send(JSON.stringify(result));
+    } catch (error) {
+        console.error(error);
+        throw error;
     }
 }
 
@@ -49,9 +53,16 @@ export async function getRamToDelete(req: Request, res: Response) {
 
 export async function deleteRam(req: Request, res: Response) {
     try {
-        
-    } catch (error: any) {
-        throw new Error(error);
+        const ram_id = req.params.id;
+        console.log('ram id delete :  ', ram_id);
+        const result = await ram_model.findByIdAndDelete(ram_id);
+        console.log(result);
+        res.statusCode = 200;
+        res.send(JSON.stringify(result));
+
+    } catch (error) {
+        console.error(error);
+        throw error;
     }
 }
 

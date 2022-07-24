@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import pc_case_model from "../models/pccase.model";
+import pc_case_model, { pc_case_interface } from "../models/pccase.model";
 import { StoreName } from "../utils/enums";
 import { getProductById } from "./database.service";
 
@@ -13,13 +13,17 @@ export async function getAllPcCases(req: Request, res: Response) {
 }
 
 export function addNewPcCase(req: Request, res: Response) {
-
+    res.render('add_pccase', { } ); 
 }
 export async function createPcCase(req: Request, res: Response) {
     try {
-        
-    } catch (error: any) {
-        throw new Error(error);
+        const result = await pc_case_model.create<pc_case_interface>(res.locals.pc_case);
+        console.log(result);
+        res.statusCode = 200;
+        res.send(JSON.stringify(result));
+    } catch (error) {
+        console.error(error);
+        throw error;
     }
 }
 
@@ -49,9 +53,16 @@ export async function getPcCaseToDelete(req: Request, res: Response) {
 
 export async function deletePcCase(req: Request, res: Response) {
     try {
-        
-    } catch (error: any) {
-        throw new Error(error);
+        const pc_case_id = req.params.id;
+        console.log('pc_case id delete :  ', pc_case_id);
+        const result = await pc_case_model.findByIdAndDelete(pc_case_id);
+        console.log(result);
+        res.statusCode = 200;
+        res.send(JSON.stringify(result));
+
+    } catch (error) {
+        console.error(error);
+        throw error;
     }
 }
 
