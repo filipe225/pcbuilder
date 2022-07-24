@@ -21,8 +21,9 @@ export const store_schema = new Schema<store_interface>(
         price: { type: Number, required: true, default: 0 },
         discount: { type: Number, required: true, default: 0 },
         availability: { type: String, enum: Object.values(Availability), required: true, default: Availability.disponivel },
-        link: { type: String, required: true, default: '' }
-    }
+        link: { type: String, required: false }
+    },
+    { timestamps: true }
 );
 
 const store_model = model('store', store_schema);
