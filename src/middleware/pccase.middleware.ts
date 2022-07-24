@@ -30,7 +30,7 @@ export function pc_caseMiddlewareTransform(req: Request, res: Response, next: Ne
     }
 
     // save to locals variable for next function to handle
-    res.locals.cpu = pc_case;
+    res.locals.pc_case = pc_case;
 
     next();
 }

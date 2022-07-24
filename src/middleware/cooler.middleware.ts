@@ -30,7 +30,7 @@ export function coolerMiddlewareTransform(req: Request, res: Response, next: Nex
     }
 
     // save to locals variable for next function to handle
-    res.locals.cpu = cooler;
+    res.locals.cooler = cooler;
 
     next();
 }

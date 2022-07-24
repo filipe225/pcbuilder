@@ -30,7 +30,7 @@ export function motherboardMiddlewareTransform(req: Request, res: Response, next
     }
 
     // save to locals variable for next function to handle
-    res.locals.cpu = motherboard;
+    res.locals.motherboard = motherboard;
 
     next();
 }

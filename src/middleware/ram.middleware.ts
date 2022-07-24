@@ -30,7 +30,7 @@ export function ramMiddlewareTransform(req: Request, res: Response, next: NextFu
     }
 
     // save to locals variable for next function to handle
-    res.locals.cpu = ram;
+    res.locals.ram = ram;
 
     next();
 }

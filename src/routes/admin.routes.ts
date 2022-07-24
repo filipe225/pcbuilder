@@ -27,6 +27,9 @@ import { addNewPcCase, createPcCase, deletePcCase, getAllPcCases, getPcCaseToDel
 import { psuMiddlewareTransform } from "../middleware/psu.middleware";
 import { addNewPsu, createPsu, deletePsu, getAllPsus, getPsuToDelete, getPsuToUpdate, updatePsu } from "../services/psu.service";
 
+import { addNewStorage, createStorage, deleteStorage, getAllStorages, getStorageToDelete, getStorageToUpdate, updateStorage } from "../services/storage.service";
+import { storageMiddlewareTransform } from "../middleware/storage.middleware";
+
 
 /*
     /admin/
@@ -131,13 +134,13 @@ pccase_router.get('/delete_pccase/:id', getPcCaseToDelete)
 pccase_router.delete('/delete_pccase/:id', deletePcCase);
 
 // STORAGE ROUTES
-// storage_router.get('/', getAllStorages);
-// storage_router.get('/add_storage', addNewStorage);
-// storage_router.post('/add_new_storage', storageMiddlewareTransform, createStorage);
-// storage_router.get('/update_storage/:id', getStorageToUpdate);
-// storage_router.put('/update_storage/:id', storageMiddlewareTransform, updateStorage);
-// storage_router.get('/delete_storage/:id', getStorageToDelete)
-// storage_router.delete('/delete_storage/:id', deleteStorage);
+storage_router.get('/', getAllStorages);
+storage_router.get('/add_storage', addNewStorage);
+storage_router.post('/add_new_storage', storageMiddlewareTransform, createStorage);
+storage_router.get('/update_storage/:id', getStorageToUpdate);
+storage_router.put('/update_storage/:id', storageMiddlewareTransform, updateStorage);
+storage_router.get('/delete_storage/:id', getStorageToDelete)
+storage_router.delete('/delete_storage/:id', deleteStorage);
 
 // ADMIN ROUTER
 admin_router.use('/computer', computer_router);

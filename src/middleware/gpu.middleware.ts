@@ -30,7 +30,7 @@ export function gpuMiddlewareTransform(req: Request, res: Response, next: NextFu
     }
 
     // save to locals variable for next function to handle
-    res.locals.cpu = gpu;
+    res.locals.gpu = gpu;
 
     next();
 }

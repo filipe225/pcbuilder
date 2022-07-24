@@ -1,10 +1,12 @@
 import { Request, Response } from "express";
+import pc_case_model from "../models/pccase.model";
 import { StoreName } from "../utils/enums";
 import { getProductById } from "./database.service";
 
 export async function getAllPcCases(req: Request, res: Response) {
     try {
-        
+        const all_pccases = await pc_case_model.find();
+        res.render('display_pccases', { all_pccases });
     } catch (error: any) {
         throw new Error(error);
     }

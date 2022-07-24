@@ -1,9 +1,12 @@
 import { Request, Response } from "express";
+import cooler_model from "../models/cooler.model";
 import { StoreName } from "../utils/enums";
 import { getProductById } from "./database.service";
 
 export async function getAllCoolers(req: Request, res: Response) {
     try {
+        const all_coolers = await cooler_model.find();
+        res.render('display_coolers', { all_coolers });
         
     } catch (error: any) {
         throw new Error(error);

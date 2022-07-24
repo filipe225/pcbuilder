@@ -1,4 +1,5 @@
 import { Request, Response } from "express";
+import motherboard_model from "../models/motherboard.model";
 import { StoreName } from "../utils/enums";
 import { getProductById } from "./database.service";
 
@@ -23,7 +24,8 @@ export async function createMotherboard(req: Request, res: Response) {
 
 export async function getMotherboardToUpdate(req: Request, res: Response) {
     try {
-        
+        const all_motherboards = await motherboard_model.find();
+        res.render('display_motherboards', { all_motherboards });
     } catch (error: any) {
         throw new Error(error);
     }

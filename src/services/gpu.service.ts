@@ -1,9 +1,11 @@
 import { Request, Response } from "express";
-import { getProductById } from "./database.service";
+import gpu_model from "../models/gpu.model";
 
 export async function getAllGpu(req: Request, res: Response) {
     try {
-        
+        const all_gpus = await gpu_model.find();
+        res.render('display_gpus', { all_gpus });
+
     } catch (error: any) {
         throw new Error(error);
     }

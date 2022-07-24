@@ -25,6 +25,6 @@ const storage_schema = new Schema<storage_interface>(
     { timestamps: true }
 );
 
-const storage = model('storage', storage_schema);
+const storage_model = model('storage', storage_schema);
 
-export default storage;
+export default storage_model;

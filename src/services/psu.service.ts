@@ -1,4 +1,5 @@
 import { Request, Response } from "express";
+import psu_model from "../models/psu.model";
 import { StoreName } from "../utils/enums";
 import { getProductById } from "./database.service";
 
@@ -23,7 +24,8 @@ export async function createPsu(req: Request, res: Response) {
 
 export async function getPsuToUpdate(req: Request, res: Response) {
     try {
-        
+        const all_psus= await psu_model.find();
+        res.render('display_psus', { all_psus});
     } catch (error: any) {
         throw new Error(error);
     }
