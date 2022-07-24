@@ -18,6 +18,7 @@ export function addNewCooler(req: Request, res: Response) {
 }
 export async function createCooler(req: Request, res: Response) {
     try {
+        console.log(res.locals.cooler);
         const result = await cooler_model.create<cooler_interface>(res.locals.cooler);
         console.log(result);
         res.statusCode = 200;

@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from "express";
-import { StoreName } from "../utils/enums";
+import { Availability, StoreName } from "../utils/enums";
 import { store_interface } from "../models/store.model";
 import { cooler_interface } from "../models/cooler.model";
 
