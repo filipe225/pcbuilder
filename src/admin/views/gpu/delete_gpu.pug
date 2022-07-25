@@ -4,9 +4,9 @@ extends ../template.pug
 block content 
 
     form(action= "/admin/gpu/delete_gpu/" + gpu_info._id + '?_method=DELETE', method="POST")
-        .columns
+        .row
             .column.field.form-element
                 label.label= gpu_info.name
-        .columns 
+        .row 
             .column.field.form-element
                 input(type="submit", value="Submit")

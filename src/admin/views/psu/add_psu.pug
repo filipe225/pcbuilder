@@ -4,10 +4,10 @@ extends ../template.pug
 block content
     form(action="/admin/psu/add_new_psu", method="post")
         h3 Add new psu
-        .columns
+        .row
             .column.field.form-element
                 label.label(for="name") Name
                 input#input_name(type="text", name="name")
-        .columns 
+        .row 
             .field.form-element
                 input(type="submit", value="Submit")

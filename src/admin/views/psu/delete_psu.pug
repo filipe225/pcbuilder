@@ -4,9 +4,9 @@ extends ../template.pug
 block content 
 
     form(action= "/admin/psu/delete_psu/" + psu_info._id + '?_method=DELETE', method="POST")
-        .columns
+        .row
             .column.field.form-element
                 label.label= psu_info.name
-        .columns 
+        .row 
             .column.field.form-element
                 input(type="submit", value="Submit")

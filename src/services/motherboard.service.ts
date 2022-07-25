@@ -5,7 +5,9 @@ import { getProductById } from "./database.service";
 
 export async function getAllMotherboards(req: Request, res: Response) {
     try {
-        
+        const all_motherboards = await motherboard_model.find();
+        res.render('display_motherboards', { all_motherboards });
+
     } catch (error: any) {
         throw new Error(error);
     }

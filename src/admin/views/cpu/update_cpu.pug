@@ -5,7 +5,7 @@ block content
     h3= "Update Cpu " + cpu_info.name
     
     form(action='/admin/cpu/update_cpu/' + cpu_info._id + '?_method=PUT', method="POST")
-        .columns
+        .row
             .column.field.form-element
                 label.label(for="name") Name
                 input#input_name(type="text", name="name", value= cpu_info.name)
@@ -19,7 +19,7 @@ block content
                 select#input_socket(name="socket")
                     each val, key in socket
                         option(value=val, selected= cpu_info.socket === val)= val
-        .columns 
+        .row 
             .column.field.form-element
                 label.label(for="cores") Cores
                 input#input_cores(type="number", name="cores", min="0", value= cpu_info.cores) 
@@ -37,7 +37,7 @@ block content
                 select#input_frequency_unit(name="frequency_unit")
                     each val, index in [...frequency_unit] 
                         option(val= val, selected= cpu_info.frequency_unit === val)= val 
-        .columns 
+        .row 
             .column.field.form-element
                 label.label(for="cache") Cache
                 input#input_cache(type="number", name="cache", min="0", value= cpu_info.cache) 
@@ -59,7 +59,7 @@ block content
                 select#input_ram_technology(name="ram_technology")
                     each val, key in [...ram_technology]
                         option(value= val, selected= cpu_info.ram_technology === val)= val 
-        .columns 
+        .row 
             .column.field.form-element
                 label.label(for="tdp") TDP
                 input#input_tdp(type="number", name="tdp", min="0", value= cpu_info.tdp)  
@@ -72,7 +72,7 @@ block content
                 label.label(for="year_of_release") Year Of Release
                 input#input_year_of_release(type="date", name="year_of_release", value= cpu_info.year_of_release)
         each val, key in stores
-            .columns
+            .row
                 .column.field.form-element
                     label.label(for=val + '_name') Store
                     input(type="text", name=val + '_name', value= val, disabled="true")
@@ -91,6 +91,6 @@ block content
                 .column.field.form-element
                     label.label(for=val + '_link') Link
                     input(type="text", name=val + '_link' min="0", value="0")    
-        .columns 
+        .row 
             .field.form-element
                 input(type="submit", value="Submit")

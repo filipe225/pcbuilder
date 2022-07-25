@@ -5,7 +5,9 @@ import { getProductById } from "./database.service";
 
 export async function getAllPsus(req: Request, res: Response) {
     try {
-        
+        const all_psus = await psu_model.find();
+        res.render('display_psus', { all_psus });
+
     } catch (error: any) {
         throw new Error(error);
     }
