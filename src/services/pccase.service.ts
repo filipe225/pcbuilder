@@ -29,7 +29,11 @@ export async function createPcCase(req: Request, res: Response) {
 
 export async function getPcCaseToUpdate(req: Request, res: Response) {
     try {
-        
+        const pc_case_id = req.params.id;
+        const pc_case_info = await getProductById('pc_case', pc_case_id);
+
+        res.render('update_pc_case', { pc_case_info });   
+
     } catch (error: any) {
         throw new Error(error);
     }
@@ -44,8 +48,10 @@ export async function updatePcCase(req: Request, res: Response) {
 }
 
 export async function getPcCaseToDelete(req: Request, res: Response) {
-    try {
-        
+    try {    
+        const pc_case_id = req.params.id;
+        const pc_case_info = await getProductById('pc_case', pc_case_id);
+        res.render('delete_pc_case', { pc_case_info });
     } catch (error: any) {
         throw new Error(error);
     }

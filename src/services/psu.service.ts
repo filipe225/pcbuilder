@@ -30,8 +30,11 @@ export async function createPsu(req: Request, res: Response) {
 
 export async function getPsuToUpdate(req: Request, res: Response) {
     try {
-        const all_psus= await psu_model.find();
-        res.render('display_psus', { all_psus});
+        const psu_id = req.params.id;
+        const psu_info = await getProductById('psu', psu_id);
+
+        res.render('update_psu', { psu_info });   
+
     } catch (error: any) {
         throw new Error(error);
     }
@@ -46,8 +49,10 @@ export async function updatePsu(req: Request, res: Response) {
 }
 
 export async function getPsuToDelete(req: Request, res: Response) {
-    try {
-        
+    try {    
+        const psu_id = req.params.id;
+        const psu_info = await getProductById('psu', psu_id);
+        res.render('delete_psu', { psu_info });
     } catch (error: any) {
         throw new Error(error);
     }

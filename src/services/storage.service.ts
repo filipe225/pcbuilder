@@ -1,5 +1,6 @@
 import { Request, Response } from "express";
 import storage_model, { storage_interface } from "../models/storage.model";
+import { getProductById } from "./database.service";
 
 export async function getAllStorages(req: Request, res: Response) {
     try {
@@ -27,7 +28,11 @@ export async function createStorage(req: Request, res: Response) {
 
 export async function getStorageToUpdate(req: Request, res: Response) {
     try {
-        
+        const storage_id = req.params.id;
+        const storage_info = await getProductById('storage', storage_id);
+
+        res.render('update_storage', { storage_info });   
+
     } catch (error: any) {
         throw new Error(error);
     }
@@ -42,8 +47,10 @@ export async function updateStorage(req: Request, res: Response) {
 }
 
 export async function getStorageToDelete(req: Request, res: Response) {
-    try {
-        
+    try {    
+        const storage_id = req.params.id;
+        const storage_info = await getProductById('storage', storage_id);
+        res.render('delete_storage', { storage_info });
     } catch (error: any) {
         throw new Error(error);
     }

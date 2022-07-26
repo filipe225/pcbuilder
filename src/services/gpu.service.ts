@@ -1,5 +1,6 @@
 import { Request, Response } from "express";
 import gpu_model, { gpu_interface } from "../models/gpu.model";
+import { getProductById } from "./database.service";
 
 export async function getAllGpu(req: Request, res: Response) {
     try {
@@ -29,7 +30,11 @@ export async function createGpu(req: Request, res: Response) {
 
 export async function getGpuToUpdate(req: Request, res: Response) {
     try {
-        
+        const gpu_id = req.params.id;
+        const gpu_info = await getProductById('gpu', gpu_id);
+
+        res.render('update_gpu', { gpu_info });   
+
     } catch (error: any) {
         throw new Error(error);
     }
@@ -44,8 +49,10 @@ export async function updateGpu(req: Request, res: Response) {
 }
 
 export async function getGpuToDelete(req: Request, res: Response) {
-    try {
-        
+    try {    
+        const gpu_id = req.params.id;
+        const gpu_info = await getProductById('gpu', gpu_id);
+        res.render('delete_gpu', { gpu_info });
     } catch (error: any) {
         throw new Error(error);
     }

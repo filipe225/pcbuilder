@@ -30,8 +30,11 @@ export async function createMotherboard(req: Request, res: Response) {
 
 export async function getMotherboardToUpdate(req: Request, res: Response) {
     try {
-        const all_motherboards = await motherboard_model.find();
-        res.render('display_motherboards', { all_motherboards });
+        const motherboard_id = req.params.id;
+        const motherboard_info = await getProductById('motherboard', motherboard_id);
+
+        res.render('update_motherboard', { motherboard_info });   
+
     } catch (error: any) {
         throw new Error(error);
     }
@@ -46,8 +49,10 @@ export async function updateMotherboard(req: Request, res: Response) {
 }
 
 export async function getMotherboardToDelete(req: Request, res: Response) {
-    try {
-        
+    try {    
+        const motherboard_id = req.params.id;
+        const motherboard_info = await getProductById('motherboard', motherboard_id);
+        res.render('delete_motherboard', { motherboard_info });
     } catch (error: any) {
         throw new Error(error);
     }

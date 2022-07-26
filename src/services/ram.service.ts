@@ -29,7 +29,11 @@ export async function createRam(req: Request, res: Response) {
 
 export async function getRamToUpdate(req: Request, res: Response) {
     try {
-        
+        const ram_id = req.params.id;
+        const ram_info = await getProductById('ram', ram_id);
+
+        res.render('update_ram', { ram_info });   
+
     } catch (error: any) {
         throw new Error(error);
     }
@@ -44,8 +48,10 @@ export async function updateRam(req: Request, res: Response) {
 }
 
 export async function getRamToDelete(req: Request, res: Response) {
-    try {
-        
+    try {    
+        const ram_id = req.params.id;
+        const ram_info = await getProductById('ram', ram_id);
+        res.render('delete_ram', { ram_info });
     } catch (error: any) {
         throw new Error(error);
     }

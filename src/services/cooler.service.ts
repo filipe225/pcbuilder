@@ -31,7 +31,11 @@ export async function createCooler(req: Request, res: Response) {
 
 export async function getCoolerToUpdate(req: Request, res: Response) {
     try {
-        
+        const cooler_id = req.params.id;
+        const cooler_info = await getProductById('cooler', cooler_id);
+
+        res.render('update_cooler', { cooler_info });   
+
     } catch (error: any) {
         throw new Error(error);
     }
@@ -46,8 +50,10 @@ export async function updateCooler(req: Request, res: Response) {
 }
 
 export async function getCoolerToDelete(req: Request, res: Response) {
-    try {
-        
+    try {    
+        const cooler_id = req.params.id;
+        const cooler_info = await getProductById('cooler', cooler_id);
+        res.render('delete_cooler', { cooler_info });
     } catch (error: any) {
         throw new Error(error);
     }
