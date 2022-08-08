@@ -13,7 +13,8 @@ export async function getAllPcCases(req: Request, res: Response) {
 }
 
 export function addNewPcCase(req: Request, res: Response) {
-    res.render('add_pccase', { } ); 
+    const stores = Object.values(StoreName);
+    res.render('add_pccase', { stores } ); 
 }
 export async function createPcCase(req: Request, res: Response) {
     try {

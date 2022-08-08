@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import motherboard_model, { motherboard_interface } from "../models/motherboard.model";
-import { StoreName } from "../utils/enums";
+import { MotherboardCpuManufacturer, StoreName } from "../utils/enums";
 import { getProductById } from "./database.service";
 
 export async function getAllMotherboards(req: Request, res: Response) {
@@ -14,7 +14,9 @@ export async function getAllMotherboards(req: Request, res: Response) {
 }
 
 export function addNewMotherboard(req: Request, res: Response) {
-    res.render('add_motherboard', { } ); 
+    const stores = Object.values(StoreName);
+    const manufacturer = Object.values(MotherboardCpuManufacturer);
+    res.render('add_motherboard', { manufacturer, stores } ); 
 }
 export async function createMotherboard(req: Request, res: Response) {
     try {

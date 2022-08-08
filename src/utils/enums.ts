@@ -4,9 +4,14 @@ export enum CpuType {
     AMD = 'AMD'
 }
 
-export enum Manufacturer {
+export enum MotherboardCpuManufacturer {
     AMD = 'AMD',
     INTEL = 'INTEL'
+}
+
+export enum GpuManufacturer {
+    AMD = 'AMD',
+    NVIDIA = 'NVIDIA'
 }
 
 export enum Architecture {
@@ -18,7 +23,18 @@ export enum Architecture {
 export enum Socket {
     AM4 = 'AM4',
     AM5 = 'AM5',
-    LGA = 'LGA'
+    TR4 = 'TR4',
+    sTRX4 = 'sTRX4',
+    LGA_1151 = 'LGA 1151',
+    LGA_1200 = 'LGA 1200',
+    LGA_1700 = 'LGA 1700',
+    LGA_2066 = 'LGA 2066',
+    LGA_4189 = 'LGA 4189'
+ }
+
+export enum CoolerType {
+    AIR = 'Air',
+    LIQUID = 'Liquid'
 }
 
 export enum FrequencyUnit {

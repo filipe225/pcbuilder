@@ -9,7 +9,10 @@ export interface storage_interface {
     name: string,
     type: StorageType,
     timings?: string,
+
+    images_url?: Types.Array<string> | string[],
     stores: store_interface[],
+
     createdAt?: Date | string,
     updatedAt?: Date | string
 }
@@ -20,6 +23,7 @@ const storage_schema = new Schema<storage_interface>(
         name: { type: String, required: true },
         type: { type: String, enum: Object.values(StorageType), required: true, default: StorageType.SSD_M2 },
         timings: { type: String },
+        images_url: { type: [String] },
         stores: { type: [store_schema] }
     },
     { timestamps: true }

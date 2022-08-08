@@ -63,8 +63,8 @@ computer_set_router.get('/', getAllComputerSets);
 
 // COMPUTER ROUTES
 computer_router.get('/', getAllComputers);
-computer_router.get('/new_computer', addNewComputer);
-computer_router.post('/new_computer', computerMiddlewareTransform, createComputer);
+computer_router.get('/add_computer', addNewComputer);
+computer_router.post('/add_new_computer', computerMiddlewareTransform, createComputer);
 computer_router.get('/update_computer/:id', getComputerToUpdate);
 computer_router.put('/update_computer/:id', computerMiddlewareTransform, updateComputer);
 computer_router.get('/delete_computer/:id', getComputerToDelete);
@@ -90,12 +90,12 @@ cooler_router.delete('/delete_cooler/:id', deleteCooler);
 
 // GPU ROUTES
 gpu_router.get('/', getAllGpu);
-gpu_router.get('/add_cpu', addNewGpu);
-gpu_router.post('/add_new_cpu', gpuMiddlewareTransform, createGpu);
-gpu_router.get('/update_cpu/:id', getGpuToUpdate);
-gpu_router.put('/update_cpu/:id', gpuMiddlewareTransform, updateGpu);
-gpu_router.get('/delete_cpu/:id', getGpuToDelete)
-gpu_router.delete('/delete_cpu/:id', deleteGpu);
+gpu_router.get('/add_gpu', addNewGpu);
+gpu_router.post('/add_new_gpu', gpuMiddlewareTransform, createGpu);
+gpu_router.get('/update_gpu/:id', getGpuToUpdate);
+gpu_router.put('/update_gpu/:id', gpuMiddlewareTransform, updateGpu);
+gpu_router.get('/delete_gpu/:id', getGpuToDelete)
+gpu_router.delete('/delete_gpu/:id', deleteGpu);
 
 // PSU ROUTES
 psu_router.get('/', getAllPsus);

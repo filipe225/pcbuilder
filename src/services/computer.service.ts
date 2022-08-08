@@ -7,12 +7,15 @@ import motherboard_model, { motherboard_interface } from "../models/motherboard.
 import pc_case_model, { pc_case_interface } from "../models/pccase.model";
 import psu_model, { psu_interface } from "../models/psu.model";
 import ram_model, { ram_interface } from "../models/ram.model";
+import storage_model from "../models/storage.model";
+import { CpuType } from "../utils/enums";
 import { Computers } from "../utils/mock.data";
+
 
 export async function getAllComputers(req: Request, res: Response) {
     try {
-        const result = await computer.find();
-        res.status(200).send(result);
+        const all_computers = await computer.find();
+        res.render('display_computers', { all_computers });
     } catch (error: any) {
         throw new Error(error);
     }
@@ -20,6 +23,17 @@ export async function getAllComputers(req: Request, res: Response) {
 
 export async function addNewComputer(req: Request, res: Response) {
     try {
+        const cpu_type = Object.values(CpuType);
+        const pc_cases = await pc_case_model.find({}, { _id: 1, name: 1 });
+        const motherboards = await motherboard_model.find({}, { _id: 1, name: 1 });
+        const cpus = await cpu_model.find({}, { _id: 1, name: 1 });
+        const coolers = await cooler_model.find({}, { _id: 1, name: 1 });
+        const rams = await ram_model.find({}, { _id: 1, name: 1 });
+        const gpus = await gpu_model.find({}, { _id: 1, name: 1 });
+        const storages = await storage_model.find({}, { _id: 1, name: 1 });
+        const psus = await psu_model.find({}, { _id: 1, name: 1 });
+
+        res.render('add_computer', { cpu_type, pc_cases, motherboards, cpus, coolers, rams, gpus, storages, psus });
         
     } catch (error: any) {
        throw new Error(error); 

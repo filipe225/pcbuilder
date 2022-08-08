@@ -1,5 +1,6 @@
 import { Request, Response } from "express";
 import gpu_model, { gpu_interface } from "../models/gpu.model";
+import { GpuManufacturer, StoreName } from "../utils/enums";
 import { getProductById } from "./database.service";
 
 export async function getAllGpu(req: Request, res: Response) {
@@ -13,7 +14,9 @@ export async function getAllGpu(req: Request, res: Response) {
 }
 
 export function addNewGpu(req: Request, res: Response) {
-    res.render('add_gpu', { } ); 
+    const stores = Object.values(StoreName);
+    const manufacturer = Object.values(GpuManufacturer);
+    res.render('add_gpu', { manufacturer, stores } ); 
 }
 
 export async function createGpu(req: Request, res: Response) {

@@ -1,5 +1,6 @@
 import { Request, Response } from "express";
 import storage_model, { storage_interface } from "../models/storage.model";
+import { StorageType, StoreName } from "../utils/enums";
 import { getProductById } from "./database.service";
 
 export async function getAllStorages(req: Request, res: Response) {
@@ -12,7 +13,9 @@ export async function getAllStorages(req: Request, res: Response) {
 }
 
 export function addNewStorage(req: Request, res: Response) {
-    res.render('add_storage', { } ); 
+    const stores = Object.values(StoreName);
+    const storage_types = Object.values(StorageType);
+    res.render('add_storage', { storage_types, stores } ); 
 }
 export async function createStorage(req: Request, res: Response) {
     try {

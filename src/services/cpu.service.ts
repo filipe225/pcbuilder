@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import cpu_model, { cpu_interface,  } from '../models/cpu.model';
-import { Architecture, FrequencyUnit, Manufacturer, Socket, TdpUnit, CacheUnit, RamTechonology, StoreName } from '../utils/enums';
+import { Architecture, FrequencyUnit, MotherboardCpuManufacturer, Socket, TdpUnit, CacheUnit, RamTechonology, StoreName } from '../utils/enums';
 import { getProductById } from "./database.service";
 
 export async function getAllCpus(req: Request, res: Response) { 
@@ -15,7 +15,7 @@ export async function getAllCpus(req: Request, res: Response) {
 }
 
 export function addNewCpu(req: Request, res: Response) {
-    const manufacturer = Object.values(Manufacturer);
+    const manufacturer = Object.values(MotherboardCpuManufacturer);
     const socket = Object.values(Socket);
     const architecture = Object.values(Architecture);
     const stores = Object.values(StoreName);
@@ -23,6 +23,7 @@ export function addNewCpu(req: Request, res: Response) {
     const cache_unit = Object.values(CacheUnit);
     const tdp_unit = Object.values(TdpUnit);
     const ram_technology = Object.values(RamTechonology);
+    
     res.render('add_cpu', { manufacturer, socket, architecture, stores, frequency_unit, cache_unit, tdp_unit, ram_technology } ); 
 }
 
@@ -42,7 +43,7 @@ export async function getCpuToUpdate(req: Request, res: Response) {
     try {
         const cpu_id = req.params.id;
         const cpu_info = await getProductById('cpu', cpu_id);
-        const manufacturer = Object.values(Manufacturer);
+        const manufacturer = Object.values(MotherboardCpuManufacturer);
         const socket = Object.values(Socket);
         const architecture = Object.values(Architecture);
         const stores = Object.values(StoreName);

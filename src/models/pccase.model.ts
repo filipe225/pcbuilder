@@ -8,6 +8,7 @@ export interface pc_case_interface {
     _id?: Types.ObjectId,
     product_type?: string,
     name: string,
+    brand: string,
 
     case_form_factor?: string
     motherboard_form_factor?: Motherboard_PSU_Support,
@@ -30,6 +31,7 @@ export interface pc_case_interface {
     Standard_Expansion_Slots?: number,
     Vertical_Expansion_Slots?: number,
 
+    images_url?: Types.Array<string> | string[],
     stores: store_interface[],
     
     createdAt?: Date | string,
@@ -40,6 +42,8 @@ const pc_case_schema = new Schema<pc_case_interface>(
     {
         product_type: { type: String, required: true, default: 'pccase' },
         name: { type: String, required: true },
+        brand: { type: String, required: true },
+        images_url: { type: [String] },
         stores: { type: [store_schema] }
     },
     { timestamps: true }

@@ -1,5 +1,5 @@
 import Computer from "../models/computer.model";
-import { CpuType, Manufacturer } from './enums';
+import { CpuType, MotherboardCpuManufacturer } from './enums';
 
 
 function getRandomCumpter() {

@@ -13,7 +13,8 @@ export async function getAllRams(req: Request, res: Response) {
 }
 
 export function addNewRam(req: Request, res: Response) {
-    res.render('add_ram', { } ); 
+    const stores = Object.values(StoreName);
+    res.render('add_ram', { stores } ); 
 }
 export async function createRam(req: Request, res: Response) {
     try {

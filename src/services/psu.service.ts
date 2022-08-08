@@ -14,7 +14,8 @@ export async function getAllPsus(req: Request, res: Response) {
 }
 
 export function addNewPsu(req: Request, res: Response) {
-    res.render('add_psu', { } ); 
+    const stores = Object.values(StoreName);
+    res.render('add_psu', { stores } ); 
 }
 export async function createPsu(req: Request, res: Response) {
     try {

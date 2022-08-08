@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import cooler_model, { cooler_interface } from "../models/cooler.model";
-import { StoreName } from "../utils/enums";
+import { CoolerType, Socket, StoreName } from "../utils/enums";
 import { getProductById } from "./database.service";
 
 export async function getAllCoolers(req: Request, res: Response) {
@@ -14,7 +14,10 @@ export async function getAllCoolers(req: Request, res: Response) {
 }
 
 export function addNewCooler(req: Request, res: Response) {
-    res.render('add_cooler', { } ); 
+    const socket = Object.values(Socket);
+    const type = Object.values(CoolerType);
+    const stores = Object.values(StoreName);
+    res.render('add_cooler', { type, socket, stores } ); 
 }
 export async function createCooler(req: Request, res: Response) {
     try {
