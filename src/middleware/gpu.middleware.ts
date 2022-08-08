@@ -26,6 +26,8 @@ export function gpuMiddlewareTransform(req: Request, res: Response, next: NextFu
 
     const gpu: gpu_interface = {
         name: gpu_body.name,
+        identifier: gpu_body.identifier,
+        manufacturer: gpu_body.manufacturer,
         stores
     }
 

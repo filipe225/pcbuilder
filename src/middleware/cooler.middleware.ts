@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from "express";
-import { Availability, StoreName } from "../utils/enums";
+import { Availability, Socket, StoreName } from "../utils/enums";
 import { store_interface } from "../models/store.model";
 import { cooler_interface } from "../models/cooler.model";
 
@@ -24,8 +24,12 @@ export function coolerMiddlewareTransform(req: Request, res: Response, next: Nex
         )
     });
 
+    console.log("COOLER BOODY", cooler_body);
+
     const cooler: cooler_interface = {
         name: cooler_body.name,
+        type: cooler_body.type,
+        socket: cooler_body.socket,
         stores
     }
 

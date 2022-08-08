@@ -26,7 +26,7 @@ export function cpuMiddlewareTransform(req: Request, res: Response, next: NextFu
 
     const cpu: cpu_interface = {
         name: cpu_body.name,
-        architecture: cpu_body.architecture,
+        //architecture: cpu_body.architecture,
         base_frequency: cpu_body.base_frequency,
         max_frequency: cpu_body.max_frequency,
         frequency_unit: cpu_body.frequency_unit,

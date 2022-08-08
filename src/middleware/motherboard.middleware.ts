@@ -26,6 +26,8 @@ export function motherboardMiddlewareTransform(req: Request, res: Response, next
 
     const motherboard: motherboard_interface = {
         name: motherboard_body.name,
+        identifier: motherboard_body.identifier,
+        manufacturer: motherboard_body.manufacturer,
         stores
     }
 
