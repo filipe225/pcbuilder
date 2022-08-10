@@ -1,0 +1,70 @@
+
+.footer {
+    margin-top: 30px;
+    padding: 5px 0px;
+}
+
+.card {
+    width: 100%;
+    min-height: 170px;
+    font-size: 1.2rem;
+    border: 1px solid #777;
+    border-radius: 8px;
+    position: relative;
+    transition: .3s all;
+    box-shadow: 0 2px 5px 0 rgba(3,6,26,0.15);
+    display: flex;
+    align-content: center;
+    justify-content: center;
+}
+.card:hover {
+    transform: scale(1.05);
+}
+.link-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+}
+
+.styled-table {
+    border-collapse: collapse;
+    margin: 25px auto;
+    font-size: 0.9em;
+    font-family: sans-serif;
+    min-width: 400px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+
+.styled-table thead tr {
+    background-color: #009879;
+    color: #ffffff;
+    text-align: left;
+}
+
+.styled-table th,
+.styled-table td {
+    padding: 12px 15px;
+}
+
+.styled-table tbody tr {
+    border-bottom: 1px solid #dddddd;
+}
+
+.styled-table tbody tr:nth-of-type(even) {
+    background-color: #f3f3f3;
+}
+
+.styled-table tbody tr:last-of-type {
+    border-bottom: 2px solid #009879;
+}
+
+.styled-table tbody tr.active-row {
+    font-weight: bold;
+    color: #009879;
+}
+
+.display_header {
+    display: flex;
+    justify-content: space-between;
+}

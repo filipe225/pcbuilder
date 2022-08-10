@@ -1,0 +1,24 @@
+
+extends ../template.pug 
+
+block content
+
+    form(action="/admin/computer_set/add_new_computer_set", method="post")
+
+        .row 
+            .column.field.form-element
+                label.label(for="name") Name
+                input#input_name(type="text", name="name")
+        .row
+            .col-8.column.field.form-element
+                label.label(for="computers") Computers
+                select#input_computers(type="text", name="computers", multiple, size="10")
+                    each val, index in [...computers] 
+                        option(value= val._id)= val.name
+        .row
+            .column.field.form-element
+            label(for="description") Description
+            textarea#input_description(name="description", cols="30", rows="10") 
+
+        .row 
+            input(type="submit", value="Submit")

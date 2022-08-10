@@ -2,14 +2,14 @@ extends template.pug
 
 mixin mycard(content)
     .card.card-blue-light
-        a(href= '/admin/' + content.url, class="button")= content.text
+        a(href= '/admin/' + content.url, class="link-button")= content.text
 
 block content
 
     - 
-        var buttons = [
+        var link_buttons = [
                 { url: 'computer_set/', text: 'View Computer Sets' },
-                { url: 'computers/', text: 'View Computer List' },        
+                { url: 'computer/', text: 'View Computer List' },        
                 { url: 'cpu/', text: 'View CPU List' },
                 { url: 'cooler/', text: 'View Cooler List' },
                 { url: 'storage/', text: 'View Storage List' },
@@ -21,6 +21,6 @@ block content
         ]
 
     .row
-        each button in buttons 
+        each link_button in link_buttons 
             .col-4 
-                +mycard(button) 
+                +mycard(link_button) 

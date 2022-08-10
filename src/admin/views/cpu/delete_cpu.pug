@@ -4,6 +4,9 @@ extends ../template.pug
 block content 
 
     form(action= "/admin/cpu/delete_cpu/" + cpu_info._id + '?_method=DELETE', method="POST")
+                .row
+            .column.field.form-element
+                label.label= 'WANT TO DELETE CPU ?'
         .row
             .column.field.form-element
                 label.label= cpu_info.name

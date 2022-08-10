@@ -11,13 +11,13 @@ block content
             .column.field.form-element
                 label.label(for="manufacturer") manufacturer
                 select#input_manufacturer(name="manufacturer") 
-                    each val, key in manufacturer
-                        option(value= val)= val
+                    each val, index in [...manufacturer]
+                        option(value= val, selected= index === 0)= val
             .column.field.form-element
                 label.label(for="socket") Socket
                 select#input_socket(name="socket")
-                    each val, key in socket
-                        option(value=val)= val
+                    each val, index in [...socket]
+                        option(value= val, selected= index === 0)= val
         .row 
             .column.field.form-element
                 label.label(for="cores") Cores

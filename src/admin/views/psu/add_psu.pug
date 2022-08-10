@@ -8,6 +8,60 @@ block content
             .column.field.form-element
                 label.label(for="name") Name
                 input#input_name(type="text", name="name")
+            .column.field.form-element
+                label.label(for="identifier") Identifier
+                input#input_identifier(type="text", name="identifier")
+            .column.field.form-element
+                label.label(for="brand") Brand
+                input#input_brand(type="text", name="brand")
+        .row
+            .column.field.form-element 
+                label(for="maximum_power") Maximum Power
+                input#input_maximum_power(type="number", name="maximum_power", min="0", max="2000", step="50") 
+            .column.field.form-element 
+                label(for="maximum_power_unit") Maximum Power Unit
+                select#input_maximum_power_unit(name="maximum_power_unit", disabled)
+                    each val, index in [...maximum_power_unit]
+                        option(value= val, selected= index === 0)= val 
+        .row
+            .column.field.form-element 
+                label(for="type") Type
+                select#input_type(name="type")
+                    each val, index in [...psu_type]
+                        option(value= val, selected= index === 0)= val 
+
+            .column.field.form-element
+                label(for="modular") Modular
+                select#input_modular(name="modular")
+                    each val, index in [...modular]
+                        option(value= val, selected= index === 0)= val 
+
+            .column.field.form-element 
+                label(for="energy_efficiency") Energy Efficiency
+                select#input_energy_efficiency(name="energy_efficiency")
+                    each val, index in [...energy_efficiency]
+                        option(value= val, selected= index === 0)= val 
+
+        each val, key in stores
+            .row
+                .column.field.form-element
+                    label.label(for=val + '_name') Store
+                    input(type="text", name=val + '_name', value=val disabled="true")
+                .column.field.form-element 
+                    label(for=val + '_store_sells') Store Sells?
+                    input#input_store_sells(type="checkbox", name=val + "_store_sells") 
+                .column.field.form-element
+                    label.label(for=val + '_price') Price
+                    input(type="number", name=val + '_price', min="0", value="0")  
+                .column.field.form-element
+                    label.label(for=val + '_discount') Discount
+                    input(type="text", name=val + '_discount', min="0", value="0")
+                .column.field.form-element
+                    label.label(for=val + '_availability') Availability
+                    input(type="checkbox", name=val + '_availability')
+                .column.field.form-element
+                    label.label(for=val + '_link') Link
+                    input(type="text", name=val + '_link' min="0", value="0")    
         .row 
             .field.form-element
                 input(type="submit", value="Submit")

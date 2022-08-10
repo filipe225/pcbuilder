@@ -6,6 +6,9 @@ block content
     form(action= "/admin/ram/delete_ram/" + ram_info._id + '?_method=DELETE', method="POST")
         .row
             .column.field.form-element
+                label.label= 'WANT TO DELETE RAM STICKS ?'    
+        .row
+            .column.field.form-element
                 label.label= ram_info.name
         .row 
             .column.field.form-element

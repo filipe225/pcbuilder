@@ -4,7 +4,7 @@ mixin table_list(product)
         td= product._id 
         td= product.name
         td
-            a(href='/admin/' + product.type + '/update_' + product.type + '/' + product._id) Update
+            a(href='/admin/' + product.product_type + '/update_' + product.product_type + '/' + product._id) Update
         td
-            a(href='/admin/' + product.type + '/delete_' + product.type + '/' + product._id) Delete  
+            a(href='/admin/' + product.product_type + '/delete_' + product.product_type + '/' + product._id) Delete  
 

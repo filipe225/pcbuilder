@@ -1,0 +1,15 @@
+
+extends ../template.pug 
+
+block content 
+
+    form(action= "/admin/computer/delete_computer/" + computer_info._id + '?_method=DELETE', method="POST")
+        .row
+            .column.field.form-element
+                label.label= 'WANT TO DELETE COMPUTER ?'
+        .row
+            .column.field.form-element
+                label.label= computer_info.name
+        .row 
+            .column.field.form-element
+                input(type="submit", value="Submit")

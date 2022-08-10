@@ -1,0 +1,70 @@
+
+extends ../template.pug 
+
+block content
+
+    form(action="/admin/computer/add_new_computer", method="post")
+        .row
+            .column.field.form-element
+                label.label(for="name") Name
+                input#input_name(type="text", name="name")
+            .column.field.form-element
+                label.label(for="cpu_type") CPU Type
+                select#input_cpu_type(name="cpu_type") 
+                    each val, key in cpu_type
+                        option(value= val)= val
+        .row 
+            .column.field.form-element
+                label(for="pc_case") Pc Cases
+                select#input_pc_case(name="pc_case")  
+                    each val, key in pc_cases
+                        option( value= val._id, selected= index === 0)= val.name
+        .row 
+            .column.field.form-element
+                label(for="motherboard") Motherboards
+                select#input_motherboard(name="motherboard")  
+                    each val, key in motherboards 
+                        option( value= val._id, selected= index === 0)= val.name 
+        .row 
+            .column.field.form-element
+                label(for="cpu") Processors
+                select#input_cpu(name="cpu")  
+                    each val, key in cpus 
+                        option( value= val._id, selected= index === 0)= val.name 
+        .row 
+            .column.field.form-element
+                label(for="cooler") Coolers
+                select#input_cooler(name="cooler")  
+                    each val, key in coolers 
+                        option( value= val._id, selected= index === 0)= val.name  
+        .row 
+            .column.field.form-element
+                label(for="ram") RAM Sticks
+                select#input_ram(name="ram")  
+                    each val, key in rams 
+                        option( value= val._id, selected= index === 0)= val.name 
+        .row 
+            .column.field.form-element
+                label(for="gpu") Graphic Cards
+                select#input_gpu(name="gpu")  
+                    each val, key in gpus 
+                        option( value= val._id, selected= index === 0)= val.name 
+        .row 
+            .column.field.form-element
+                label(for="storage") Storage
+                select#input_storage(name="storage")  
+                    each val, key in storages 
+                        option( value= val._id, selected= index === 0)= val.name
+        .row 
+            .column.field.form-element
+                label(for="psu") Power Supply
+                select#input_psu(name="psu")  
+                    each val, key in psus 
+                        option( value= val._id, selected= index === 0)= val.name 
+        .row
+            .column.field.form-element
+                label.label(for="description") Description
+                textarea#input_description(name="description")
+
+        .row
+            input.btn(type="submit", value="Submit")

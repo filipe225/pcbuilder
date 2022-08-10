@@ -1,0 +1,15 @@
+
+extends ../template.pug 
+
+block content 
+
+    form(action= "/admin/storage/delete_storage/" + storage_info._id + '?_method=DELETE', method="POST")
+        .row
+            .column.field.form-element
+                label.label= 'WANT TO DELETE STORAGE ?'    
+        .row
+            .column.field.form-element
+                label.label= storage_info.name
+        .row 
+            .column.field.form-element
+                input(type="submit", value="Submit")

@@ -2,9 +2,10 @@
 extends ../template.pug 
 
 block content
+
     .display_header
-        h2 Processor's List from database
-        a(href="/admin/cooler/add_cooler") Add New
+        h2 Computer's Set List from database
+        a(href="/admin/computer_set/add_computer_set") Add New
     table.styled-table
         thead
             tr
@@ -13,5 +14,5 @@ block content
                 th
                 th
         tbody
-            each cooler in all_coolers
-                +table_list(cooler)
+            each computer_set in all_computer_sets
+                +table_list(computer_set)

@@ -6,6 +6,9 @@ block content
     form(action= "/admin/pccase/delete_pccase/" + pccase_info._id + '?_method=DELETE', method="POST")
         .row
             .column.field.form-element
+                label.label= 'WANT TO DELETE PC CASE ?'
+        .row
+            .column.field.form-element
                 label.label= pccase_info.name
         .row 
             .column.field.form-element

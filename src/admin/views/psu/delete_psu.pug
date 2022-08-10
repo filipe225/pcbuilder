@@ -6,6 +6,9 @@ block content
     form(action= "/admin/psu/delete_psu/" + psu_info._id + '?_method=DELETE', method="POST")
         .row
             .column.field.form-element
+                label.label= 'WANT TO DELETE POWER SUPPLY ?'
+        .row
+            .column.field.form-element
                 label.label= psu_info.name
         .row 
             .column.field.form-element

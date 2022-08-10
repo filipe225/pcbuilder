@@ -4,6 +4,9 @@ extends ../template.pug
 block content 
 
     form(action= "/admin/cooler/delete_cooler/" + cooler_info._id + '?_method=DELETE', method="POST")
+                .row
+            .column.field.form-element
+                label.label= 'WANT TO DELETE COOLER ?'
         .row
             .column.field.form-element
                 label.label= cooler_info.name

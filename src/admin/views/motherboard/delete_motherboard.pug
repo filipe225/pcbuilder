@@ -4,6 +4,9 @@ extends ../template.pug
 block content 
 
     form(action= "/admin/motherboard/delete_motherboard/" + motherboard_info._id + '?_method=DELETE', method="POST")
+                .row
+            .column.field.form-element
+                label.label= 'WANT TO DELETE MOTHERBOARD ?'
         .row
             .column.field.form-element
                 label.label= motherboard_info.name
