@@ -1,7 +1,8 @@
-import computer from "../models/computer.model";
+
 import express, { Router, Request, Response, NextFunction } from "express";
 
-import { getAllComputerSets } from "../services/computer_set.service";
+import { computerSetMiddlewareTransform } from "../middleware/computer_sets.middleware";
+import { addNewComputerSet, createComputerSet, deleteComputerSet, getAllComputerSets, getComputerSetToDelete, getComputerSetToUpdate, updateComputerSet } from "../services/computer_set.service";
 
 import { computerMiddlewareTransform } from "../middleware/computer.middleware";
 import { addNewComputer, createComputer, deleteComputer, getAllComputers, getComputerToDelete, getComputerToUpdate, updateComputer } from "../services/computer.service";
@@ -31,6 +32,7 @@ import { addNewStorage, createStorage, deleteStorage, getAllStorages, getStorage
 import { storageMiddlewareTransform } from "../middleware/storage.middleware";
 
 
+
 /*
     /admin/
         /admin/cpu/
@@ -58,8 +60,12 @@ admin_router.get('/', (req: Request, res: Response, next: NextFunction) => {
 
 // COMPUTER SET ROUTES
 computer_set_router.get('/', getAllComputerSets);
-    // computer_set_router.post('/new_computer_set', computerSetMiddlewareTransform addComputerSet);
-    // computer_set_router.delete('/computer_set/:id', deleteComputerSet);
+computer_set_router.get('/add_computer_set', addNewComputerSet);
+computer_set_router.post('/add_new_computer_set', computerSetMiddlewareTransform, createComputerSet);
+computer_set_router.get('/update_computer_set/:id', getComputerSetToUpdate);
+computer_set_router.put('/update_computer_set/:id', computerSetMiddlewareTransform, updateComputerSet);
+computer_set_router.get('/delete_computer_set/:id', getComputerSetToDelete);
+computer_set_router.delete('/delete_computer_set/:id', deleteComputerSet);
 
 // COMPUTER ROUTES
 computer_router.get('/', getAllComputers);

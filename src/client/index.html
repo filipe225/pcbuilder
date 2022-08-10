@@ -18,8 +18,9 @@
                 computers_info: {},
                 
                 async init() {
-                    const res = await fetch('http://localhost:7000/api/test/computers');
+                    const res = await fetch('http://localhost:7000/api/computer_sets');
                     const data = await res.json();
+                    console.log(data);
                     this.computers_info = data;   
                 }
             }));

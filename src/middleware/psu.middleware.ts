@@ -28,6 +28,11 @@ export function psuMiddlewareTransform(req: Request, res: Response, next: NextFu
         name: psu_body.name,
         identifier: psu_body.identifier,
         brand: psu_body.brand,
+        maximum_power: psu_body.maximum_power,
+        maximum_power_unit: psu_body.maximum_power_unit,
+        type: psu_body.type,
+        modular: psu_body.modular,
+        energy_efficiency: psu_body.energy_efficiency,
         images_url: psu_body.images_url ? psu_body.images_url : [],
         stores
     }

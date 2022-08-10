@@ -4,6 +4,11 @@ export enum CpuType {
     AMD = 'AMD'
 }
 
+export enum PsuType {
+    ATX = 'ATX',
+    SFX = 'SFX'
+}
+
 export enum MotherboardCpuManufacturer {
     AMD = 'AMD',
     INTEL = 'INTEL'
@@ -65,6 +70,20 @@ export enum ClockSpeeedUnit {
 
 export enum PowerConsumptionUnit {
     W = 'Watts'
+}
+
+export enum PsuModularType {
+    FULL_MODULAR = 'Full Modular',
+    NON_MODULAR = 'Non Modular'
+}
+
+export enum EnergyEfficiency {
+    plus_80 = '80 plus',
+    plus_80_bronze = '80 plus bronze',
+    plus_80_silver = '80 plus silver',
+    plus_80_gold = '80 plus gold',
+    plus_80_platinum = '80 plus platinum',
+    plus_80_titanium = '80 plus titanium'
 }
 
 export enum Motherboard_PSU_Support {

@@ -42,7 +42,11 @@ export async function addNewComputer(req: Request, res: Response) {
 
 export async function createComputer(req: Request, res: Response) {
     try {
-        
+        console.log("COMPUTER", res.locals.computer);
+        const response = await computer.create<computer_interface>(res.locals.computer);
+        console.log(response);
+        res.statusCode = 200;
+        res.render('form_submission', { response: JSON.stringify(response)});
     } catch (error: any) {
        throw new Error(error); 
     }
@@ -74,6 +78,11 @@ export async function getComputerToDelete(req: Request, res: Response) {
 
 export async function deleteComputer(req: Request, res: Response) {
     try {
+        const computer_id = req.params.id;
+        const response = await computer.findByIdAndDelete(computer_id);
+        console.log(response);
+        res.statusCode = 200;
+        res.render('form_submission', { response });
         
     } catch (error: any) {
        throw new Error(error); 
@@ -87,13 +96,14 @@ export async function getComputerById(req: Request, res: Response) {
 
         let all_computer_parts: computer_interface = {
             _id: computer_info._id,
+            product_type: 'computer',
             cpu_type: computer_info.cpu_type,
             name: computer_info.name,
             description: computer_info.description,
             cpu: await cpu_model.findById(computer_info.cpu) as cpu_interface,
             gpu: await gpu_model.findById(computer_info.gpu) as gpu_interface,
             motherboard: await motherboard_model.findById(computer_info.motherboard) as motherboard_interface,
-            pccase: await pc_case_model.findById(computer_info.pccase) as pc_case_interface,
+            pc_case: await pc_case_model.findById(computer_info.pc_case) as pc_case_interface,
             psu: await psu_model.findById(computer_info.psu) as psu_interface,
             ram: await ram_model.findById(computer_info.ram) as ram_interface,
             cooler: computer_info.cooler ? (await cooler_model.findById(computer_info.cooler) as cooler_interface) : undefined

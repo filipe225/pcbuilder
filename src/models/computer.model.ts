@@ -11,10 +11,11 @@ import { ram_interface } from './ram.model';
 
 export interface computer_interface {
     _id?: Types.ObjectId,
+    product_type: 'computer',
     cpu_type: CpuType,
     name: string,
     description: string,
-    pccase: Types.ObjectId | pc_case_interface,
+    pc_case: Types.ObjectId | pc_case_interface,
     motherboard: Types.ObjectId | motherboard_interface,
     cpu: Types.ObjectId | cpu_interface,
     gpu: Types.ObjectId | gpu_interface,
@@ -27,10 +28,11 @@ export interface computer_interface {
 
 export const computer_schema = new Schema<computer_interface>(
     {
+        product_type: { type: String, required: true, default: 'computer' },
         cpu_type: { type: String, enum: Object.values(CpuType), required: true },
         name: { type: String, required: true },
         description: { type: String, default: '' },
-        pccase: { type: Schema.Types.ObjectId, required: true },
+        pc_case: { type: Schema.Types.ObjectId, required: true },
         motherboard: { type: Schema.Types.ObjectId, required: true },
         cpu: { type: Schema.Types.ObjectId, required: true },
         gpu: { type: Schema.Types.ObjectId, required: true },

@@ -35,7 +35,7 @@ block content
                 label.label(for="frequency_unit") Frequency Unit 
                 select#input_frequency_unit(name="frequency_unit")
                     each val, index in [...frequency_unit] 
-                        option(val= val, selected= index === 0)= val 
+                        option(value= val, selected= index === 0)= val 
         .row 
             .column.field.form-element
                 label.label(for="cache") Cache
@@ -44,7 +44,7 @@ block content
                 label.label(for="cache_unit") Cache Unit 
                 select#input_cache_unit(name="cache_unit")
                     each val, index in [...cache_unit] 
-                        option(val= val, selected= index === 0)= val 
+                        option(value= val, selected= index === 0)= val 
             .column.field.form-element
                 label.label(for="architecture") Architecture
                 select#input_architecture(name="architecture")
@@ -57,7 +57,7 @@ block content
                 label.label(for="ram_technology") RAM Technology
                 select#input_ram_technology(name="ram_technology")
                     each val, index in [...ram_technology]
-                        option(val= val, selected= index === 0)= val 
+                        option(value= val, selected= index === 0)= val 
         .row 
             .column.field.form-element
                 label.label(for="tdp") TDP
@@ -66,7 +66,7 @@ block content
                 label.label(for="tdp_unit") TDP Unit 
                 select#input_tdp_unit(name="tdp_unit")
                     each val, index in [...tdp_unit] 
-                        option(val= val, selected= index === 0)= val 
+                        option(value= val, selected= index === 0)= val 
             .column.field.form-element
                 label.label(for="year_of_release") Year Of Release
                 input#input_year_of_release(type="date", name="year_of_release")

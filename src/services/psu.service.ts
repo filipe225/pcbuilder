@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import psu_model, { psu_interface } from "../models/psu.model";
-import { StoreName } from "../utils/enums";
+import { EnergyEfficiency, PowerConsumptionUnit, PsuModularType, PsuType, StoreName } from "../utils/enums";
 import { getProductById } from "./database.service";
 
 export async function getAllPsus(req: Request, res: Response) {
@@ -14,8 +14,12 @@ export async function getAllPsus(req: Request, res: Response) {
 }
 
 export function addNewPsu(req: Request, res: Response) {
+    const maximum_power_unit = Object.values(PowerConsumptionUnit);
+    const psu_type = Object.values(PsuType);
+    const modular = Object.values(PsuModularType);
+    const energy_efficiency = Object.values(EnergyEfficiency);
     const stores = Object.values(StoreName);
-    res.render('add_psu', { stores } ); 
+    res.render('add_psu', { maximum_power_unit, psu_type, modular, energy_efficiency, stores } ); 
 }
 export async function createPsu(req: Request, res: Response) {
     try {
