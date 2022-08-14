@@ -26,6 +26,7 @@ export function ramMiddlewareTransform(req: Request, res: Response, next: NextFu
 
     const ram: ram_interface = {
         name: ram_body.name,
+        abrev: ram_body.abrev,
         identifier: ram_body.identifier,
         brand: ram_body.brand,
         images_url: ram_body.images_url ? ram_body.images_url : [],

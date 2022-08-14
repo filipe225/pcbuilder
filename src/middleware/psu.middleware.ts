@@ -26,6 +26,7 @@ export function psuMiddlewareTransform(req: Request, res: Response, next: NextFu
 
     const psu: psu_interface = {
         name: psu_body.name,
+        abrev: psu_body.abrev,
         identifier: psu_body.identifier,
         brand: psu_body.brand,
         maximum_power: psu_body.maximum_power,

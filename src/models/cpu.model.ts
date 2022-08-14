@@ -8,6 +8,7 @@ export interface cpu_interface {
     _id?: Types.ObjectId,
     product_type?: string,
     name: string,
+    abrev: string,
     manufacturer: MotherboardCpuManufacturer,
 
     socket?: Socket,
@@ -44,6 +45,7 @@ const cpu_schema = new Schema<cpu_interface>(
     {
         product_type: { type: String, required: true, default: 'cpu' },
         name: { type: String, required: true },
+        abrev: { type: String, required: true },
         manufacturer: { type: String, enum: Object.values(MotherboardCpuManufacturer), required: true },
         socket: { type: String, enum: Object.values(Socket), required: true },
         cores: { type: Number, required: true },

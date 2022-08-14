@@ -7,6 +7,7 @@ export interface storage_interface {
     _id?: Types.ObjectId,
     product_type?: string,
     name: string,
+    abrev: string,
     type: StorageType,
     timings?: string,
 
@@ -21,6 +22,7 @@ const storage_schema = new Schema<storage_interface>(
     {
         product_type: { type: String, required: true, default: 'storage' },
         name: { type: String, required: true },
+        abrev: { type: String, required: true },
         type: { type: String, enum: Object.values(StorageType), required: true, default: StorageType.SSD_M2 },
         timings: { type: String },
         images_url: { type: [String] },

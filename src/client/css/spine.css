@@ -54,5 +54,4 @@ h1, h2, h3, h4, h5, h6 {
 
 section, .section {
     margin: var(--y-gap) var(--x-gap);
-    background-color: var(--spring-green);
 }

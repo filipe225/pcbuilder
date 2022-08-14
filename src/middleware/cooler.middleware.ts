@@ -28,6 +28,7 @@ export function coolerMiddlewareTransform(req: Request, res: Response, next: Nex
 
     const cooler: cooler_interface = {
         name: cooler_body.name,
+        abrev: cooler_body.abrev,
         type: cooler_body.type,
         socket: cooler_body.socket,
         stores

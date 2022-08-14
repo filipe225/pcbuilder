@@ -26,6 +26,7 @@ export function storageMiddlewareTransform(req: Request, res: Response, next: Ne
 
     const storage: storage_interface = {
         name: storage_body.name,
+        abrev: storage_body.abrev,
         type: storage_body.type,
         stores
     }

@@ -46,7 +46,7 @@ export async function createComputer(req: Request, res: Response) {
         const response = await computer.create<computer_interface>(res.locals.computer);
         console.log(response);
         res.statusCode = 200;
-        res.render('form_submission', { response: JSON.stringify(response)});
+        res.send( JSON.stringify(response));
     } catch (error: any) {
        throw new Error(error); 
     }
@@ -82,7 +82,7 @@ export async function deleteComputer(req: Request, res: Response) {
         const response = await computer.findByIdAndDelete(computer_id);
         console.log(response);
         res.statusCode = 200;
-        res.render('form_submission', { response });
+        res.send( JSON.stringify(response));
         
     } catch (error: any) {
        throw new Error(error); 

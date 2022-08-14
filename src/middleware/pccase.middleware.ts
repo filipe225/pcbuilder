@@ -26,6 +26,7 @@ export function pc_caseMiddlewareTransform(req: Request, res: Response, next: Ne
 
     const pc_case: pc_case_interface = {
         name: pc_case_body.name,
+        abrev: pc_case_body.abrev,
         brand: pc_case_body.brand,
         stores
     }

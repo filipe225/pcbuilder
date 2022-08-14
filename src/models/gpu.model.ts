@@ -7,6 +7,7 @@ export interface gpu_interface {
     _id?: Types.ObjectId,
     product_type?: string,
     name: string,
+    abrev: string,
     identifier: string, // To be able to select all 3060 for example e.g 3060, 1650 super
     manufacturer: GpuManufacturer,
 
@@ -37,6 +38,7 @@ const gpu_schema = new Schema<gpu_interface>(
     {
         product_type: { type: String, required: true, default: 'gpu' },
         name: { type: String, required: true },
+        abrev: { type: String, required: true },
         identifier: { type: String, required: true },
         manufacturer: { type: String, enum: Object.values(GpuManufacturer), required: true },
         bus: { type: String, enum: Object.values(BUS), required: true, default: BUS.Gen_4 },

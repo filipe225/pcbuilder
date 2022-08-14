@@ -6,6 +6,7 @@ export interface cooler_interface {
     _id?: Types.ObjectId,
     product_type?: string,
     name: string,
+    abrev: string,
     type: CoolerType,
     socket: any[],
 
@@ -20,6 +21,7 @@ const cooler_schema = new Schema<cooler_interface>(
     {
         product_type: { type: String, required: true, default: 'cooler' },
         name: { type: String, required: true },
+        abrev: { type: String, required: true },
         type: { type: String, enum: Object.values(CoolerType), required: true, default: CoolerType.AIR },
         socket: { type: [String], required: true},
         images_url: { type: [String] },
